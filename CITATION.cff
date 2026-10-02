@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you cite this work, include the exact repository commit used. Independent expert review is pending."
+title: "A rational counterexample to the reciprocal-logarithmic assertion in Erdős problem 143"
+authors:
+  - family-names: Apicella
+    given-names: Mattia
+type: software
+version: "0.1.0"
+date-released: "2026-10-02"
+repository-code: "https://github.com/mapice/erdos-143-candidate-disproof"
+url: "https://github.com/mapice/erdos-143-candidate-disproof"
+abstract: >-
+  Paper and Lean 4 formalization of a rational set separated by at least one
+  from all positive integer dilates of its distinct elements, with divergent
+  reciprocal-logarithmic sum. Local kernel checks and a 245-declaration axiom
+  audit passed; independent expert review remains pending.
+keywords:
+  - Erdos problem 143
+  - Lean 4
+  - formal verification
+  - primitive sets
+  - analytic number theory

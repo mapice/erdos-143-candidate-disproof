@@ -1,0 +1,24 @@
+{
+  "project": "Erdos143",
+  "lean": "4.24.0",
+  "mathlib": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "modules": 55,
+  "source_lines": 3906,
+  "closed_theorems": [
+    "Erdos143.mainConclusion_proved : MainConclusion",
+    "Erdos143.strongConclusion_proved : StrongConclusion",
+    "Erdos143.realConclusion_proved"
+  ],
+  "foundational_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "source_archive_sha256": "ff9ac574f274122a6b30ff75ae92bae00d2ab0920223189bb7b1a0ca3cb0e8e3",
+  "source_manifest_sha256": "effd2b535661231353f4e00302a13792e9c16430ebbcc13066415b062756579c",
+  "verification_command": "bash scripts/verify.sh",
+  "verification_exit_code": 0,
+  "completed_utc": "2026-10-02T18:53:46.492434+00:00",
+  "proved_declarations_audited": 245,
+  "build_result": "Build completed successfully (3333 jobs)."
+}

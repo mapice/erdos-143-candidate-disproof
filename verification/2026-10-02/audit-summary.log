@@ -1,0 +1,2 @@
+245 proved declarations audited; only standard foundations: Classical.choice, Quot.sound, propext
+Closed MainConclusion, StrongConclusion, and real-domain conclusion audited successfully

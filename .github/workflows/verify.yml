@@ -1,0 +1,31 @@
+name: Verify Lean proof
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    # Keep private-repository runner usage off; this becomes active if the
+    # owner independently chooses to make the repository public later.
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Bootstrap the pinned Lean and mathlib environment
+        run: bash scripts/bootstrap.sh
+      - name: Build and audit every proved declaration
+        run: bash scripts/verify.sh

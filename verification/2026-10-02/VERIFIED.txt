@@ -1,0 +1,27 @@
+VERIFICATION RESULT: PASS
+Command: bash scripts/verify.sh
+Exit code: 0
+Lean 4.24.0; mathlib f897ebcf72cd16f89ab4577d0c826cd14afaafc7
+Build completed successfully (3333 jobs).
+245 proved declarations audited.
+
+Closed declarations (no extra hypotheses):
+Erdos143.mainConclusion_proved : Erdos143.MainConclusion
+Erdos143.strongConclusion_proved : Erdos143.StrongConclusion
+Erdos143.realConclusion_proved : explicit real-domain existential conclusion
+
+Exact #print axioms result for each conclusion:
+[propext, Classical.choice, Quot.sound]
+
+No sorry, admit, custom axioms or unsafe proof bypasses were found.
+StatementAudit.lean checks the expanded rational and real statements.
+The real statement includes both ENNReal divergence and ordinary non-summability.
+
+The source archive is independently frozen:
+erdos143-lean-source-complete-20261002.tar.gz
+SHA256 ff9ac574f274122a6b30ff75ae92bae00d2ab0920223189bb7b1a0ca3cb0e8e3
+Source-manifest SHA256 effd2b535661231353f4e00302a13792e9c16430ebbcc13066415b062756579c
+
+Only local files were changed. No remote repository publication was performed.
+See README.md for reproduction, and Construction-correspondence.md for the
+precise sufficient changes to the original candidate proof.

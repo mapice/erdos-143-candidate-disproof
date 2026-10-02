@@ -1,0 +1,26 @@
+# Lean build outputs, downloaded dependencies and toolchains
+.lake/
+tooling/
+.elan/
+# New verification outputs; committed evidence lives in verification/
+logs/
+# LaTeX build outputs (the reviewed paper PDF is intentionally tracked)
+paper/build/
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+# Keep the historical verification logs
+!verification/**/*.log
+# Local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.env
+.env.*
