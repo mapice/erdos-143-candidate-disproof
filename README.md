@@ -1,6 +1,6 @@
 # A rational counterexample for Erdős problem 143
 
-**Mattia Apicella · October 2, 2026**
+**Mattia Apicella · October 2, 2026; revised October 23, 2026**
 
 A candidate disproof of the **reciprocal-logarithmic convergence assertion** in
 [Erdős problem 143](https://www.erdosproblems.com/143), with a complete Lean 4
@@ -76,10 +76,11 @@ git clone https://github.com/mapice/erdos-143-candidate-disproof.git
 cd erdos-143-candidate-disproof
 bash scripts/bootstrap.sh
 bash scripts/verify.sh
+bash scripts/verify-manuscript.sh
 ```
 
-A private repository requires your usual GitHub access. On Linux x86_64 the
-bootstrap downloads the official Lean release and checks its pinned SHA-256.
+This repository is public. On Linux x86_64, when Lake is not already available,
+the bootstrap downloads the official Lean release and checks its pinned SHA-256.
 It requires Bash, Python 3, Git, curl, tar, zstd, and several GB of free disk.
 On other platforms, install Lean with [elan](https://github.com/leanprover/elan),
 then run the same scripts with `lean` and `lake` on `PATH`; `lean-toolchain`
@@ -105,6 +106,8 @@ Each conclusion depends only on `propext`, `Classical.choice`, and `Quot.sound`,
 the standard foundations used here by Lean/mathlib. The project audit rejects
 any other axiom and checks all 245 lemmas and theorems. See
 [AxiomAudit.lean](AxiomAudit.lean) and [StatementAudit.lean](StatementAudit.lean).
+The additional `verify-manuscript.sh` command compiles and audits
+`Erdos143.manuscript_full_statement` separately from those 245 declarations.
 The source guard is an additional check, not a replacement for kernel checking.
 
 [CI](.github/workflows/verify.yml) runs the same scripts for public-repository
@@ -112,9 +115,18 @@ pushes and pull requests. Its job is deliberately skipped while the repository
 is private, avoiding private-repository runner usage. Local verification does
 not require GitHub Actions or changes to account settings.
 
+## Editorial preparation
+
+The paper was revised on October 23, 2026 for possible submission to the
+Bulletin of the London Mathematical Society. The [public proof supplement](submission/blms-2026-10-23/README.md)
+includes a separately checked combined statement, explicitly asserting infinitude
+and the same nested finite prefixes, and a downloadable source archive.
+No journal submission or acceptance is implied. The unchanged original paper
+is preserved in `paper/original-2026-10-02/`.
+
 ## Repository guide
 
-- [`paper/`](paper/README.md): 15-page English paper, standalone LaTeX, and build instructions
+- [`paper/`](paper/README.md): 16-page English paper, revised October 23, 2026, standalone LaTeX, and build instructions
 - [`Erdos143/`](Erdos143/): 55 Lean modules, from analytic inputs to the real-domain conclusion
 - [`Erdos143.lean`](Erdos143.lean): umbrella import for the complete formalization
 - [`docs/`](docs/README.md): proof roadmap and paper-to-code correspondence

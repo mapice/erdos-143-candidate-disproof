@@ -24,3 +24,13 @@ __pycache__/
 *.pyc
 .env
 .env.*
+
+# Local editorial drafts and personal submission package; publish only the proof supplement.
+/scripts/prepare-submission.py
+/submission/*
+!/submission/blms-2026-10-23/
+/submission/blms-2026-10-23/*
+!/submission/blms-2026-10-23/README.md
+!/submission/blms-2026-10-23/ManuscriptAudit.lean
+!/submission/blms-2026-10-23/CORRISPONDENZA-TEX-LEAN.md
+!/submission/blms-2026-10-23/erdos143-lean-supplement.zip

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-23",
+  "lean": "4.24.0",
+  "mathlib": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "proof_sources_unchanged": true,
+  "declarations_audited": 245,
+  "supplementary_theorem": "Erdos143.manuscript_full_statement",
+  "supplementary_audit_source_sha256": "c697dc8fc68a0773caea43e98d6f6095c837141debb98b25d4561b8c54922cc1",
+  "pdf_pages": 16,
+  "independent_expert_review": false,
+  "verification": "Earlier full local build and 245-declaration audit retained for unchanged frozen sources; combined supplementary theorem freshly checked",
+  "manuscript_sha256": "17baea4d50d15978c0e914512c1668ff68ef940c392bb0eb4690a77d9f891126",
+  "manuscript_source_sha256": "9374b252927a8cd782fe8e86497f5f3a7c395706cde54a2e76855787ff02235c",
+  "source_revision_before_editorial_changes": "0f4b96940c97c7e0c36d17b584ec2bf1d842c02a"
+}

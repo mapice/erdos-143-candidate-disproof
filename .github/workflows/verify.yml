@@ -29,3 +29,5 @@ jobs:
         run: bash scripts/bootstrap.sh
       - name: Build and audit every proved declaration
         run: bash scripts/verify.sh
+      - name: Check the combined manuscript statement
+        run: bash scripts/verify-manuscript.sh

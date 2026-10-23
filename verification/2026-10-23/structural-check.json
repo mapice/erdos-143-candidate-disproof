@@ -1,0 +1,40 @@
+{
+  "labels": 70,
+  "references": 78,
+  "bibliography_items": 5,
+  "citation_keys": [
+    "Bloom143",
+    "Erdos1935",
+    "Erdos1948",
+    "KLL2025",
+    "Tao2014"
+  ],
+  "duplicate_labels": false,
+  "missing_references": false,
+  "main_theorem_unchanged": true,
+  "frozen_proof_inputs_checked_by": "scripts/check_integrity.py",
+  "manuscript_source_sha256": "9374b252927a8cd782fe8e86497f5f3a7c395706cde54a2e76855787ff02235c",
+  "latex_environments_balanced": true,
+  "terminology_normalization": "dilation-separated sets = original sets by identical definition",
+  "main_theorem_identical_to_previous_submission": true,
+  "unchanged_rendered_pages_since_previous_review": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "changed_rendered_pages_in_last_review": [
+    15,
+    16
+  ]
+}

@@ -41,8 +41,10 @@ python3 scripts/check_integrity.py
 ```
 
 [proof-SHA256SUMS](proof-SHA256SUMS) covers the unchanged proof and pinned
-build inputs. [artifact-SHA256SUMS](artifact-SHA256SUMS) covers the supplied
-paper and complete frozen archive. [frozen-SHA256SUMS](frozen-SHA256SUMS) is
+build inputs. [artifact-SHA256SUMS](artifact-SHA256SUMS) covers the original supplied
+paper, now preserved in `paper/original-2026-10-02/`, and the complete frozen archive.
+The October 23 editorial revision is separately identified in the submission
+fascicle; it does not replace or change the original paper digests. [frozen-SHA256SUMS](frozen-SHA256SUMS) is
 the original manifest for the snapshot layout, kept as a provenance record;
 it is not a manifest for the curated repository layout.
 
@@ -72,3 +74,22 @@ historical records. The Lean version and all dependency revisions remain
 pinned. Successful kernel checking establishes the formal statements from the
 listed foundations; it does not establish priority, external acceptance, or
 that every prose explanation has been independently reviewed.
+
+## October 23, 2026 local verification
+
+[Fresh verification records](2026-10-23/) record a successful 3,333-job
+build, the complete 245-declaration axiom audit, the expanded statement
+audit, and the additional manuscript-specific checks. The pinned nine
+dependency revisions were checked against the lockfile, with their tracked
+sources unchanged. The original proof source digests still match.
+
+The additional check is
+`submission/blms-2026-10-23/ManuscriptAudit.lean`; it explicitly checks the
+strong conclusion, the same recursive witness and its prefix mass bound.
+These are new local computational checks, not independent expert review.
+
+The supplementary audit now also checks `Erdos143.manuscript_full_statement`,
+a single existential statement with explicit infinitude and the same finite
+prefixes. This additional corollary was compiled separately on October 23;
+its axiom report is in `2026-10-23/manuscript-audit.log`. It is not included
+in the count of 245 declarations of the unchanged frozen project.

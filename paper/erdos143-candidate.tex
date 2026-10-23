@@ -1,10 +1,8 @@
 \documentclass[11pt,reqno]{amsart}
+\usepackage[OT1]{fontenc}
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{microtype}
-\usepackage{tikz}
-\usepackage{placeins}
-\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathreplacing}
-\usepackage[letterpaper,textwidth=6.25in,textheight=8.85in,centering]{geometry}
+\usepackage{needspace}
 \usepackage[hidelinks,unicode]{hyperref}
 \hypersetup{pdftitle={A rational counterexample to the reciprocal-logarithmic assertion in Erdos problem 143},pdfauthor={Mattia Apicella},pdfsubject={A formally verified construction; external expert review pending}}
 \newtheorem{theorem}{Theorem}[section]
@@ -31,31 +29,30 @@
 \newcommand{\set}[1]{\{#1\}}
 \title[A rational counterexample for Erd\H{o}s problem 143]{A rational counterexample to the reciprocal-logarithmic assertion in Erd\H{o}s problem 143}
 \author{Mattia Apicella}
-\date{October 2, 2026}
+\date{October 2, 2026; revised October 23, 2026}
+\subjclass[2020]{Primary 11J25; Secondary 11B05, 11N37, 68V20}
 \keywords{Integer dilation approximation, primitive sets, periodic sets, Dirichlet characters}
 \begin{document}
 \begin{abstract}
-We construct a countable set of positive rational
-numbers separated by at least one from all positive integer dilates of its
-other elements, but with divergent reciprocal-logarithmic sum. The
-set is built from finite primitive blocks, each equipped with a private
-prime. At the beginning of every round, a common integer grid makes the
-entire preceding configuration exclude only a small proportion of labels.
-Each round then adds finitely many blocks and a fixed positive amount of
-weight. The arithmetic input is a finite primitive-set selection lemma for
-periodic sets, proved here by Euler-product bounds, Dirichlet characters,
-and Abel averaging. All periods are fixed before
-the corresponding limiting argument. The construction retains every
-previous point and places each new point within $m^{-12}/2$ to the right of
-an integer $m$. A companion Lean~4 formalization proves the complete
-existence theorem, including the analytic selection lemma, all finite
-extensions, the recursion, and the passage to a subset of the reals with
-a nonsummable positive weight. Its exact statements, dependencies, and
-reproduction instructions are recorded.
+We construct a countably infinite set $A\subset\mathbb Q\cap[2,\infty)$
+such that $|ka-b|\geq1$ for all distinct $a,b\in A$ and all positive
+integers $k$, while $\sum_{a\in A}1/(a\log a)=\infty$. This gives a
+negative answer to the reciprocal-logarithmic convergence question in
+Erd\H{o}s problem 143, distinct from its logarithmic-density question.
+The construction combines a primitive-set selection lemma for periodic
+sets with rational blocks equipped with private primes. At the beginning
+of each round, a new integer grid makes the preceding configuration
+exclude only a small proportion of labels. Finitely many new blocks then
+add a uniformly positive amount of weight without moving earlier points. The selection
+lemma follows from Euler-product estimates, Dirichlet characters and
+Abel averaging at a fixed modulus. Every constructed point lies within
+$m^{-12}/2$ to the right of an integer $m$. A companion Lean~4
+formalization checks the analytic lemma, the finite extensions and the
+complete existence theorem.
 \end{abstract}
 \maketitle
 
-\section{The result}
+\section{Introduction}
 \label{sec:introduction}
 
 Write $\N=\{1,2,\ldots\}$ and let $\log$ denote the natural logarithm.
@@ -67,7 +64,7 @@ For $x>1$ and for a finite or countable set $B\subset(1,\infty)$, put
 The sum is understood as the supremum of the sums over finite subsets.
 
 \begin{definition}
-A set $A\subset(1,\infty)$ is \emph{original} if
+A set $A\subset(1,\infty)$ is \emph{dilation-separated} if
 \begin{equation}\label{eq:original}
  \abs{ka-b}\geq1
  \quad\text{for all }a,b\in A,\ a\ne b,\quad
@@ -78,18 +75,34 @@ A set $P\subset\N\setminus\{1\}$ is \emph{primitive} if no element of $P$
 divides a distinct element of $P$.
 \end{definition}
 
-In problem II on the final page of \cite{Erdos1948}, Erd\H{o}s asks, in
-particular, whether the separation condition \eqref{eq:original} forces
-the convergence of $W(A)$. This is the reciprocal-logarithmic assertion in
-the problem now numbered 143 in \cite{Bloom143}. The accompanying
-logarithmic-density assertion has been proved by Koukoulopoulos,
-Lamzouri, and Lichtman \cite[Theorem 1]{KLL2025}: every original set satisfies
+Taking $k=1$ in~\eqref{eq:original} shows that distinct points are at
+least one apart. Hence every bounded interval contains only finitely
+many points of a dilation-separated set, and every such set is at most
+countable.
+
+For a set of integers greater than one, condition~\eqref{eq:original}
+is equivalent to primitivity: an integer distance less than one must be
+zero, so the excluded event is precisely divisibility between distinct
+elements. Erd\H{o}s proved that every primitive set of integers has finite
+reciprocal-logarithmic weight~\cite{Erdos1935}. The analogous question
+for real sets is subtler, since exact divisibility is replaced by
+uniform separation from integer dilates.
+
+In problem II on the final page of~\cite{Erdos1948}, Erd\H{o}s asks whether
+condition~\eqref{eq:original} forces both convergence of $W(A)$ and
+vanishing logarithmic density. These are the two questions in the problem
+now numbered 143 in~\cite{Bloom143}. Koukoulopoulos, Lamzouri, and
+Lichtman~\cite[Theorem 1]{KLL2025} established the latter assertion:
+every dilation-separated set satisfies
 \begin{equation}\label{eq:logdensity}
  \sum_{a\in A\cap[1,x]}\frac1a=o(\log x).
 \end{equation}
-The theorem below disproves the convergence assertion for $W(A)$ and is
-consistent with
-\eqref{eq:logdensity}.
+Their theorem gives approximate integer-dilation relations under positive
+upper logarithmic density. The theorem below shows that divergence of
+$W(A)$ alone does not force such relations, even for rational sets whose
+points lie extremely close to integers. In particular, the two proposed
+sparsity conclusions have different answers; the counterexample is
+consistent with~\eqref{eq:logdensity}.
 
 \begin{theorem}\label{thm:main}
 There exists a countably infinite set $A\subset\Q\cap[2,\infty)$ with
@@ -103,17 +116,27 @@ Every $a\in A$ can be written as
  \qquad m\in\N,\quad 0<\eta\leq\frac12m^{-12}.
 \end{equation}
 More precisely, the construction produces one nested sequence of finite
-original sets $F_1\subset F_2\subset\cdots$ whose union is $A$ and for which
+dilation-separated sets $F_1\subset F_2\subset\cdots$ whose union is $A$ and for which
 \begin{equation}\label{eq:prefix-weight}
  W(F_R)\geq\frac{R}{576}\qquad(R\in\N).
 \end{equation}
 \end{theorem}
 
-The following sections give the full argument, with its classical inputs
-identified explicitly. The formal theorem has no additional analytic or
-construction hypothesis. The companion verification is discussed in
-Section~\ref{sec:verification}; independent expert review and priority
-are not claimed.
+The main difficulty is to accumulate infinite weight while maintaining
+separation from every integer multiple of every earlier point. A small
+perturbation of integer primitive sets alone does not give this global
+compatibility. We use finite rational blocks with a private-prime
+invariant. At the beginning of each round this invariant supplies a new
+grid on which all earlier points exclude only a small proportion of
+labels. The grid changes, but the earlier points do not. Periodic
+primitive-set selection then supplies enough new labels to obtain a
+uniform gain in weight. The constants are sufficient for this construction;
+no optimality is asserted for the gain or the exponent in
+\eqref{eq:near-integer}.
+
+The following sections give the argument in full. The companion formal
+proof has no additional analytic or construction hypothesis; its scope
+and reproduction instructions appear in Section~\ref{sec:verification}.
 
 \subsection{Outline and notation}
 For $n\in\N$, let $\Om(n)$ be the number of prime factors of $n$, counted
@@ -142,13 +165,34 @@ of labels on a fixed grid $D\N$. A round contains $\lfloor D/12\rfloor$
 blocks. Private primes make it possible to restart the next round on a
 new grid while preserving the entire preceding configuration.
 
+\subsection*{AI Declaration}
+OpenAI Codex was used during the research and preparation of this article.
+GPT-5.6 Sol was used in the initial exploration of a positive answer to the
+convergence question, and Astra was used in developing the counterexample.
+AI assistance contributed to mathematical
+exploration, proof development, Lean formalization, and exposition,
+including the editorial revision of this manuscript. The historical model
+identifiers are reported as retained by the author; a more specific
+version identifier for Astra is not recorded here. The author takes
+responsibility for the content of the article.
+
+\subsection*{Mathematical software and supporting material}
+The companion project uses Lean~4.24.0 and a pinned revision of mathlib.
+The predicate named \path{Original} in the code is precisely the
+dilation-separation condition~\eqref{eq:original}.
+Its source files, exact theorem statements and reproduction instructions
+are supplied as supplementary material; the repository is
+\url{https://github.com/mapice/erdos-143-candidate-disproof}.
+The scope of the formal checks is described in
+Section~\ref{sec:verification}.
+
 \section{Primitive weight in a periodic set}
 \label{sec:analytic}
 
 The classical analytic inputs in this section are the absolutely
 convergent Euler products for $\zeta(s)$ and Dirichlet $L$-functions for
 $\Re s>1$, character orthogonality for a fixed modulus, and continuity of
-$L(s,\chi)$ at $s=1$ for nonprincipal $\chi$; see \cite{Tao2014}.
+$L(s,\chi)$ at $s=1$ for nonprincipal $\chi$; see \cite[Sections 2 and 6]{Tao2014}.
 Non-vanishing at $s=1$ is not needed. We use an Abel average to find
 arbitrarily high levels with sufficient weight, without requiring a
 lower bound for every sufficiently high individual level.
@@ -168,12 +212,10 @@ We will prove convergence of this series and the sufficient estimate
 \begin{equation}\label{eq:residue-abel}
  \liminf_{u\uparrow1}(1-u)A_{L,b}(u)\geq\frac1{4L}.
 \end{equation}
-Here and below a lower limit at least $c$ means that, for every real
-$h<c$, the expression is at least $h$ for all $u<1$ sufficiently close
-to $1$. The modulus and residue are fixed before the limit is taken.
-The exact finite-selection statement of Theorem~\ref{thm:selection}
-is part of the complete Lean formalization by this route; the scope and
-reproduction of the verification are recorded in Section~\ref{sec:verification}.
+The modulus and residue are fixed before the limit is taken; no
+uniformity in $L$ is required. This estimate will supply arbitrarily
+high primitive levels whose weight exceeds $1/6$ after summation over
+the admitted residue classes.
 
 \subsection{Uniform Euler-factor estimates}
 For a Dirichlet character $\chi$ modulo $L$, $0\leq u\leq1$, and $t>0$,
@@ -273,9 +315,11 @@ with an absolute constant $C$.
 
 \begin{proof}
 For nonprincipal $\chi$, continuity on the compact real segment $[1,2]$
-bounds $|L(s,\chi)|$. Equation~\eqref{eq:twisted-product-bound} then
-proves \eqref{eq:nonprincipal-local}, since $x^{2u}\leq\max(1,x^2)$
-for $x>0$. The principal Euler product and the elementary estimates
+gives a bound $B\geq1$ with $|L(s,\chi)|\leq B$ there. For $0<u\leq1$,
+equation~\eqref{eq:twisted-product-bound} gives
+$|G_\chi(u,t)|^2\leq2B^{2u}\leq2B^2$, while $G_\chi(0,t)=1$.
+This proves \eqref{eq:nonprincipal-local} with $C_{L,\chi}=2B$.
+The principal Euler product and the elementary estimates
 \[
  \frac1t\leq\zeta(1+t)\leq1+\frac1t
 \]
@@ -393,18 +437,21 @@ class, and $\Om(gm)=\Om(g)+\Om(m)$. For $m\geq2$,
  0\leq\frac1{m\log m}-\frac1{m(\log m+\log g)}
  \leq\frac{\log g}{m(\log m)^2}.
 \end{equation}
-Using $0\leq u^{\Om(m)}\leq1$ and Lemma~\ref{lem:integrability}, we get
+Using $0\leq u^{\Om(m)}\leq1$, $u^{\Om(g)}\leq1$, and
+Lemma~\ref{lem:integrability}, we get
 \begin{equation}\label{eq:residue-scaling}
  A_{L,b}(u)\geq\frac{u^{\Om(g)}}g A_{M,c}(u)
                     -\frac{\log g}{g}C_2.
 \end{equation}
-Any possible omitted term with $m=1$ is nonnegative, so does not affect
-the lower bound. Multiplication by $1-u$ makes the error term vanish.
+An omitted target term corresponding to $m=1$, if present, has $n=g\geq2$
+and is nonnegative, so does not affect the lower bound. Multiplication
+by $1-u$ makes the error term vanish.
 The first coefficient tends to $1/g>0$, and the coprime case supplies
 the lower bound $1/(4M)>0$. The definition of lower limit now gives
 $1/(4gM)=1/(4L)$. No coprimality between $g$ and $m$ is required.
 \end{proof}
 
+\Needspace{6\baselineskip}
 \subsection{Heavy levels and finite extraction}
 
 \begin{proof}[Proof of Theorem~\ref{thm:selection}]
@@ -456,14 +503,15 @@ has data
  \end{gathered}
 \end{equation}
 The prime $H_i$ is called the \emph{private prime} of the block.
-This terminology refers to the nondivisibility invariant below; it
-does not assert that $H_i$ occurs in a reduced denominator.
+Since $q_i\equiv-1\pmod{H_i}$, the factor $H_i$ in the numerator cannot
+cancel against the denominator. The invariant below prevents this prime
+from dividing the nonprivate numerator parts of any block.
 
 \begin{definition}\label{def:admissible}
 A finite list of blocks is an \emph{admissible configuration} if, writing
 $F=\bigcup_{i=1}^t A_i$, the following hold:
 \begin{enumerate}
-\item[(I1)] $F$ is original, and every point of $A_i$ exceeds every point
+\item[(I1)] $F$ is dilation-separated, and every point of $A_i$ exceeds every point
 of $\bigcup_{j<i}A_j$ by more than $1$.
 \item[(I2)] The primes $H_i$ are distinct and greater than $2$, and
 \begin{equation}\label{eq:private-invariant}
@@ -485,44 +533,6 @@ All invariants concern only data that have already been selected. A new
 private prime is chosen large enough to preserve the remaining positive
 budget; no prescribed rate of prime growth is needed.
 
-Figure~\ref{fig:prime-roles} separates the roles of the two primes in a
-block. The order of choices is part of the construction: selecting the
-label set does not yet select the perturbation size.
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[
- font=\small,
- stage/.style={draw,thin,minimum width=2.1cm,minimum height=1.0cm,align=center},
- flow/.style={-{Stealth[length=1.6mm]},thin}]
- \node[stage] (past) at (0,0) {$F,D$\\past and grid};
- \node[stage,fill=black!8] (H) at (2.55,0) {$H_i$\\private prime};
- \node[stage] (E) at (5.1,0) {$E$\\period fixed};
- \node[stage] (P) at (7.65,0) {$P_i$\\primitive};
- \node[stage,fill=black!8] (G) at (10.2,0) {$G_i$\\large prime};
- \node[stage] (A) at (12.75,0) {$A_i$\\new block};
- \foreach \a/\b in {past/H,H/E,E/P,P/G,G/A}
-   \draw[flow] (\a.east)--(\b.west);
- \node[anchor=north,align=center,text width=6.6cm] (Hrole) at (2.55,-1.05)
-   {\textbf{Compatibility with the past}\\[3pt]
-    $H_i>D,\quad H_i>N_{j,n}\ (j<i)$\\[3pt]
-    $H_i\nmid n\quad(n\in P_i)$\\[3pt]
-    Prime exclusions precede $P_i$.};
- \node[anchor=north,align=center,text width=6.6cm] (Grole) at (10.2,-1.05)
-   {\textbf{Size of the positive displacement}\\[3pt]
-    $q_i=H_iG_i-1,\quad \eta_m=m/q_i$\\[3pt]
-    $q_i\geq2U^{13},\quad U=D\max P_i$\\[3pt]
-    Enlarge $G_i$ after $D,H_i,P_i$ are fixed.};
- \draw[thin] (H.south)--(Hrole.north);
- \draw[thin] (G.south)--(Grole.north);
-\end{tikzpicture}
-\caption{The two primes and the order of choices. Arrows indicate
-dependencies, not quantitative sizes. The private prime $H_i$ enforces the
-nondivisibility invariant; the later choice of $G_i$ makes the displacement
-small enough for all old rational sources and for the near-integer bound.
-No label is removed after $P_i$ is selected.}
-\label{fig:prime-roles}
-\end{figure}
 
 \section{A grid compatible with the preceding configuration}
 \label{sec:grid}
@@ -603,49 +613,9 @@ $\prod_i(1-x_i)\geq1-\sum_i x_i$ for $0\leq x_i\leq1$, together with
 \end{proof}
 
 The reset in Lemma~\ref{lem:grid} changes only the grid used for future
-blocks. Figure~\ref{fig:grid-reset} shows why one old source excludes just
-one class of labels on this grid, even though all of its integer multiples
-must be avoided.
+blocks. Every old source excludes just one class of labels on this grid,
+even though all of its integer multiples must be avoided.
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[font=\small]
- \node[align=center] at (6.1,0.5)
-   {Old point $a=HN/q$ is unchanged; choose $D=tN$ with $(tq,H)=1$.\\[4pt]
-    $\displaystyle |ka-D\ell|=\frac aH|kH-tq\ell|$};
- \node[anchor=east] at (0.25,-0.75) {$\ell\bmod H$};
- \foreach \x/\lab in {1/0,2.75/1,4.5/2,6.25/\cdots,8/H-2,9.75/H-1} {
-   \draw[thin] (\x-0.7,-1.12) rectangle (\x+0.7,-0.38);
-   \node at (\x,-0.75) {$\lab$};
- }
- \fill[black!18] (0.3,-1.12) rectangle (1.7,-0.38);
- \node at (1,-0.75) {$0$};
- \draw[thin,decorate,decoration={brace,mirror,amplitude=4pt}]
-   (2.05,-1.25)--(10.45,-1.25);
- \node[align=center] at (6.25,-1.95)
-   {$H-1$ admissible residue classes\\[3pt]
-    $|ka-D\ell|\geq a/H>4\quad\text{for every }k\in\Z$};
- \draw[thin,-{Stealth[length=1.5mm]}] (1,-1.12)--(1,-2.62);
- \node[anchor=north,align=center,text width=3.2cm] at (0.9,-2.72)
-   {One forbidden class\\$D\ell=ka$ for\\some $k\in\N$};
- \node[draw,thin,align=center,text width=8.8cm,inner sep=8pt]
-   at (7.3,-3.95)
-   {All old sources together\\[4pt]
-   $\displaystyle \dens(\cR(F_0,D))
-      =\prod_{j\ \mathrm{old}}(1-H_j^{-1})
-      \geq1-\sum_{j\ \mathrm{old}}H_j^{-1}>\frac{99}{100}$};
-\end{tikzpicture}
-\caption{Exact residue classification after a grid reset. The strip is a
-symbolic view of $\Z/H\Z$; the ellipsis suppresses intermediate classes,
-and its drawn widths do not represent densities or distances. For a fixed
-old point, only $\ell\equiv0\pmod H$ causes an exact collision. The other
-classes have a gap greater than $4$. Distinct old private primes give the
-product formula below the strip. All old points and their weights remain
-fixed.}
-\label{fig:grid-reset}
-\end{figure}
-
-\FloatBarrier
 \section{The density cost of a block}
 \label{sec:cost}
 
@@ -658,7 +628,7 @@ The interval is closed. This slightly stronger exclusion gives the
 half-open admissibility required in \eqref{eq:free-labels}.
 
 \begin{lemma}[Root-residue bound]\label{lem:cost}
-If $\ell\bmod p\notin\mathcal B(p,D)$, then
+Let $\ell\in\N$. If $\ell\bmod p\notin\mathcal B(p,D)$, then
 $|cDh-D\ell|>1$ for every $h\in\Z$. Moreover,
 \begin{equation}\label{eq:cost}
  \frac{|\mathcal B(p,D)|}{p}\leq\frac3D.
@@ -685,7 +655,7 @@ $h=kn$. No coprimality between $D$ and $p$ is assumed.
 
 \begin{remark}
 The number $cD$ is a counting device only. It is not added to the
-original set. Its multiples contain all multiples of the entire block,
+separated set. Its multiples contain all multiples of the entire block,
 which is why the bound is independent of the number of labels in $P$.
 \end{remark}
 
@@ -728,60 +698,18 @@ No independence or coprimality of these moduli is required. The single
 private-prime budget covers both the old-round points and all private
 prime exclusions; it is not counted twice.
 
-Figure~\ref{fig:density-budget} plots the sufficient lower bound in
-\eqref{eq:round-density}. It is a bound from the proof, not a computed
-density for a constructed example.
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[font=\small,x=10cm,y=9cm]
- \fill[black!7] (0,{2/3})--(0,0.99)--(1,0.74)--(1,{2/3})--cycle;
- \draw[thin,-{Stealth[length=1.7mm]}] (0,0.60)--(1.07,0.60);
- \draw[thin,-{Stealth[length=1.7mm]}] (0,0.60)--(0,1.025);
- \foreach \x/\lab in {0/0,0.25/\frac1{48},0.5/\frac1{24},0.75/\frac1{16},1/\frac1{12}} {
-   \draw[thin] (\x,0.60)--(\x,0.592);
-   \node[anchor=north] at (\x,0.582) {$\lab$};
- }
- \foreach \y/\lab in {0.60/\frac35,0.6666666667/\frac23,0.74/\frac{37}{50},0.80/\frac45,0.90/\frac9{10},0.99/\frac{99}{100}} {
-   \draw[thin] (0,\y)--(-0.009,\y);
-   \node[anchor=east] at (-0.015,\y) {$\lab$};
- }
- \draw[thin,densely dotted] (0,0.74)--(1,0.74);
- \draw[thin,dashed] (0,{2/3})--(1.02,{2/3});
- \draw[semithick] (0,0.99)--(1,0.74);
- \draw[thin,densely dotted] (1,0.60)--(1,0.74);
- \fill (0,0.99) circle[radius=1.3pt];
- \draw[fill=white,thin] (1,0.74) circle[radius=2pt];
- \node[anchor=south,align=center] at (0.48,0.918)
-   {Guaranteed bound\\$B(s/D)=99/100-3s/D$};
- \node[anchor=north] at (0.46,0.659) {Selection threshold $2/3$};
- \draw[thin,{Stealth[length=1.4mm]}-{Stealth[length=1.4mm]}]
-   (1.035,{2/3})--(1.035,0.74);
- \node[anchor=west,align=left] at (1.055,0.705)
-   {$\displaystyle\frac{11}{150}$\\remaining margin};
- \node[anchor=west] at (1.085,0.60) {$s/D$};
- \node[anchor=south west] at (0,1.025) {Density};
-\end{tikzpicture}
-\caption{A finite-round density budget on the fixed grid $D\N$.
-The bound includes the single private-prime budget $1/100$ and at most
-$3s/D$ for the roots of the $s$ blocks already inserted in this round.
-Actual insertions have $s<J=\lfloor D/12\rfloor$, so $s/D<1/12$.
-The open endpoint at $1/12$ is a comparison endpoint; there
-$B=37/50$, still $11/150$ above the selection threshold. Shading shows
-this guaranteed margin, not empirical density. The vertical axis starts
-at $3/5$.}
-\label{fig:density-budget}
-\end{figure}
-
-\FloatBarrier
 \section{The next block}
 \label{sec:extension}
 
-We now show that every insertion required by a round can be carried out.
-In addition to admissibility, assume throughout this section that the
-current grid $D$ is coprime to all private primes already present. At the
-start of the round this follows from \eqref{eq:grid-choice}; new private
-primes in the round will be chosen greater than $D$.
+Retain the round setup of Section~\ref{sec:cost}. The grid $D$ was chosen
+for the initial configuration $F_0$ by Lemma~\ref{lem:grid}; the current
+point set $F$ consists of $F_0$ and the $s<J$ blocks already inserted on
+this same grid. Assume that the current configuration is admissible and
+that $D$ is coprime to all its private primes. This holds at the start
+of the round by~\eqref{eq:grid-choice}. We show that the next insertion
+exists and preserves these conditions; its new private prime will exceed
+$D$.
 
 \subsection{Choosing the prime before the labels}
 Let $i$ be the index of the next block and let
@@ -794,8 +722,8 @@ $\delta=1/100-\sum_{j<i}H_j^{-1}>0$. Choose a prime $H_i$ exceeding
 Unboundedness of the primes meets these finitely many bounds.
 Since $H_i^{-1}<\delta$, the enlarged private-prime set still satisfies
 \eqref{eq:reciprocal-primes}. Let $\mathcal H=\{H_1,\ldots,H_i\}$,
-let $\mathcal P$ contain the roots of the $s<J$ blocks already inserted
-in this round, and define
+let $\mathcal P$ be the set of numerators $p_j$ of the $s$ blocks already
+inserted in this round, and define
 \begin{equation}\label{eq:E-choice}
  E=E(\mathcal H,\mathcal P,D).
 \end{equation}
@@ -857,7 +785,7 @@ the new block satisfies
 \end{proposition}
 
 \begin{proof}
-We first verify every type of ordered pair in the original-set condition.
+We first verify every type of ordered pair in the separation condition.
 
 \smallskip
 \noindent\emph{An old source and a new target.}
@@ -973,24 +901,22 @@ Set $A=\bigcup_{R\geq1}F_R$. Every point is rational by
 $D_i\geq48$ and $n\geq2D_i$ at its insertion.
 
 Given distinct $a,b\in A$, choose a round $R$ with $a,b\in F_R$.
-The original-set property of $F_R$ yields $|ka-b|\geq1$ for every
-$k\in\N$. This proves \eqref{eq:original} on the union, with the same
-pair controlling all multipliers simultaneously.
+The separation property of $F_R$ yields $|ka-b|\geq1$ for every
+$k\in\N$. This proves \eqref{eq:original} on the union, since the
+round $R$ containing the pair is chosen independently of $k$.
 
-Every block is finite and nonempty, and its least element exceeds the
-maximum of the entire preceding prefix by more than $1$. There are
-infinitely many blocks. Their least elements tend to infinity, so each
-bounded interval meets only finitely many blocks and contains only
-finitely many points of $A$. Thus $A$ is countably infinite and has no
-finite accumulation point. Equation~\eqref{eq:near-integer} holds for
-every point by (I3), and remains true because no point is ever changed.
+The set $A$ is a countable union of finite sets. Its separation at $k=1$
+implies that every bounded interval contains only finitely many points,
+so $A$ has no finite accumulation point. Equation~\eqref{eq:near-integer}
+holds for every point by (I3), and remains true because no point is ever
+changed.
 
 Finally, monotonicity of nonnegative sums gives
 \[
  W(A)\geq W(F_R)\geq\frac R{576}\qquad\text{for every }R\geq1.
 \]
-Therefore $W(A)=\infty$. Equivalently, monotone convergence for this
-nested exhaustion gives $W(A)=\lim_{R\to\infty}W(F_R)=\infty$.
+Therefore $W(A)=\infty$. Since each point of $A$ has finite weight,
+$A$ must be infinite. This proves all assertions of the theorem.
 \end{proof}
 
 \section{Order of choices and formal verification}
@@ -1003,43 +929,19 @@ The dependency order for a new block is
  \ \longrightarrow\ D\ \longrightarrow\ H_i\ \longrightarrow\ E
  \ \longrightarrow\ P_i\ \longrightarrow\ G_i\ \longrightarrow\ A_i.
 \]
-The grid $D$ is chosen once per round, and is held fixed for that round.
-For every use of Theorem~\ref{thm:selection}, the entire periodic set
-$E$, including all prime exclusions, is fixed before the level
-$\Om(n)=r$ is chosen. Its truncation $P_i$ is then fixed before the
-perturbation denominator $H_iG_i-1$ is chosen. Thus neither a modulus
-uniformity assertion nor a prime exclusion imposed retroactively on
-$P_i$ is part of the argument.
+The grid $D$ is fixed throughout a round. Every use of
+Theorem~\ref{thm:selection} fixes the entire periodic set $E$, including
+all prime exclusions, before selecting $P_i$. Only then is $G_i$ chosen.
+The analytic limit therefore has a fixed modulus. Compatibility with
+later primes is preserved by choosing each new $H_i$ above all stored
+$N_{j,n}$, while the new labels and $G_i$ avoid the current private primes.
 
-The private-prime induction likewise has two distinct directions.
-At insertion, a new $H_i$ exceeds every old integer $N_{j,n}$; this
-protects all old points from the new prime. The new labels and $G_i$
-avoid all private primes already present; this protects the new points
-from all those primes. Repeating the same finite verification at each
-later stage establishes the invariant for every finite prefix.
-
-\subsection{Determinacy of the choices}
-The formal construction uses classical choice on the proved finite-round
-extension theorem, followed by recursion on the natural numbers. Only
-countably many successive finite choices are made. If a specified
-selection procedure is desired, take the least prime satisfying each
-finite list of bounds and the least power of two in the grid choice.
-For $P_i$, fix a period of $E$ and an integer threshold $N$ satisfying
-\eqref{eq:P-choice}. Enumerate triples consisting of a level $r$ with
-$2^r\geq N$, a cutoff $X$, and a precision for a rational lower bound on
-the finite sum
-\[
- \sum_{\substack{n\leq X\\n\in E\\\Om(n)=r}}\frac1{n\log n}.
-\]
-Accept the first certified lower bound exceeding $1/6$. Membership in
-$E$ is decidable from its finite period; for rational source points, the
-condition in \eqref{eq:free-labels} can also be checked by deciding
-whether a bounded rational interval contains an integer. Rational
-approximations to these finite logarithmic sums are effective.
-Theorem~\ref{thm:selection} guarantees termination of this search. No
-uniform bound on its runtime, the levels, the truncations, or the periods
-is asserted. This optional enumeration describes a mathematical selection
-procedure; it is not an extracted executable of the Lean construction.
+\subsection{Choice of successive extensions}
+The formal construction selects a witness of the proved finite-round
+extension theorem by classical choice and iterates this selection by
+recursion on the natural numbers. It establishes existence without a
+quantitative bound on the sizes of the grids, periods or blocks, or an
+extracted executable construction.
 
 \subsection{Verification scope and reproducibility}
 \label{sec:verification}
@@ -1057,112 +959,97 @@ every ordered distinct pair and every positive natural multiplier, and
 infinite nonnegative total weight. The second adds local finiteness and
 \eqref{eq:near-integer}. Their definitions are in
 \path{Erdos143/Definitions.lean} and their proofs in
-\path{Erdos143/Main.lean}. Neither theorem assumes a selection principle,
-a finite extension, a sequence of prefixes, or any other unproved
-analytic or construction hypothesis.
+\path{Erdos143/Main.lean}. The project proves the periodic selection lemma
+and the finite-round extension theorem, then constructs the nested
+sequence using classical choice as described above.
 
-The further theorem \path{realConclusion_proved}, in
-\path{Erdos143/RealConclusion.lean}, states the real-domain conclusion
-explicitly. It gives $A\subset\R\cap[2,\infty)$, countability, rationality
-of every point, all the ordered multiplier inequalities, and both
-\begin{equation}\label{eq:formal-divergence}
- \sum_{a\in A}^{[0,\infty]}\frac1{a\log a}=\infty,
- \qquad
- \left(a\mapsto\frac1{a\log a}\right)\text{ is not summable on }A.
-\end{equation}
-The first sum is encoded in Lean's extended nonnegative reals
-\path{ENNReal}, with value $\top$; the second is an explicit
-negation of \path{Summable} for real-valued terms. The transfer from
-$\Q$ to $\R$ uses the injective rational embedding and an equivalence of
-the two indexing subtypes. Nonnegativity of all weights connects the two
-claims. Thus divergence is not represented by the conventional value of
-a nonsummable real \path{tsum}. Countable infinitude follows as well,
-since every finite set here has finite weight.
+The real-domain statement is proved in \path{RealConclusion.lean} as
+\begin{center}\small
+\path{Erdos143.realConclusion_proved}.
+\end{center}
+It explicitly includes countability,
+rationality, the lower bound $2$, every ordered multiplier inequality,
+and both divergence of the nonnegative sum and nonsummability of the
+real-valued weight. The transfer uses the injective embedding of
+$\Q$ into $\R$ and an equivalence of the indexing sets. In particular,
+divergence is encoded by $\top$ in the extended nonnegative reals
+(Lean's \path{ENNReal}), together with an explicit negation of
+\path{Summable}; it is not inferred from the conventional value of a
+nonsummable real \path{tsum}. The lower bound and divergence imply that
+the set is infinite.
 
-The analytic interface is exactly Theorem~\ref{thm:selection}, proved by
-\path{periodicPrimitiveSelection_proved}. The principal, all-residue,
-and periodic Abel bounds are, respectively,
+The periodic selection theorem is checked by the declaration
+\begin{center}\small
+\path{periodicPrimitiveSelection_proved}.
+\end{center}
+The finite construction follows the same order of choices and uses the
+same strict prime budget, closed residue filter and product reset grid
+as the proof above. The declarations
 \begin{center}\small
 \begin{tabular}{@{}l@{\quad}l@{}}
-\eqref{eq:principal-abel} & \path{principal_abel_lower_bound}\\
-\eqref{eq:residue-abel} & \path{all_residues_abel_lower_bound}\\
-\eqref{eq:periodic-abel} & \path{periodic_abel_lower_bound}
+\path{insert_block_exists} & finite insertion\\
+\path{block_extension_valid} & simultaneous invariants\\
+\path{round_extension_exists} & gain of at least $1/576$\\
+\path{stateSequence_mass_lower} & prefix weight bound
 \end{tabular}
 \end{center}
-The formal construction uses the strict finite prime budget
-\eqref{eq:reciprocal-primes}, the closed root filter
-\eqref{eq:bad-residues}, a product reset grid, and the non-strict round
-gain of Proposition~\ref{prop:round}, as presented here. Its principal
-construction declarations are
-\begin{center}\small
-\begin{tabular}{@{}l@{\quad}l@{}}
-Finite labels & \path{round_labels}\\
-Complete insertion & \path{insert_block_exists}\\
-Simultaneous invariants & \path{block_extension_valid}\\
-Complete round & \path{round_extension_exists}\\
-Recursive finite states & \path{stateSequence}\\
-Prefix weight bound & \path{stateSequence_mass_lower}\\
-Infinite total weight & \path{constructedSet_weight_diverges}
-\end{tabular}
-\end{center}
-The formal states store finite sets of triples $(H,N,q)$ and a finite
-set of private primes; the prose groups these triples into their blocks.
-The source notes \path{Abel-periodic-proof.md} and
-\path{Construction-correspondence.md} record the theorem mapping and
-these representational details. No lower-limit assertion for every
-individual $\Om$ level is needed or claimed.
+connect these steps to the nested union in \path{Main.lean}.
+The formal states store finite sets of triples $(H,N,q)$ and private
+primes; the prose groups the triples into blocks. A detailed
+statement-by-statement correspondence is supplied with the code in the
+\path{docs/} directory. No asymptotic assertion for every individual
+$\Om$ level is used. The supplementary file
+\path{ManuscriptAudit.lean} also checks a single existential statement
+combining these conclusions, including infinitude and the same nested
+finite prefixes.
 
-The frozen project pins mathlib to revision
+\Needspace{5\baselineskip}
+The environment pins mathlib to revision
 \begin{center}\small
 \texttt{f897ebcf72cd16f89ab4577d0c826cd14afaafc7},
 \end{center}
-with transitive revisions fixed in \path{lake-manifest.json}. On Linux
-x86\_64, reproduction from the supplied source archive is:
+with all transitive revisions fixed in \path{lake-manifest.json}.
+
+\Needspace{7\baselineskip}
+From the supplied supplementary project, the commands
 \begin{quote}\small\ttfamily
 bash scripts/bootstrap.sh\\
 bash scripts/verify.sh
 \end{quote}
-The bootstrap retrieves the pinned official Lean release and mathlib
-dependencies; it requires network access and the tools listed in the
-project's \path{README.md}. The verification builds with warnings as
-errors, checks the sources for proof placeholders, audits all proved
-declarations, and prints the expanded existential statements.
-Two local verification runs succeeded, including a clean rebuild of the
-project from the frozen sources. The source hashes agreed before and
-after the second run. These were local computational checks, not external
-expert reviews.
+retrieve the pinned dependencies, build the proof with warnings treated
+as errors, audit all proved declarations and compile the expanded
+statement checks. Network access and the tools listed in the project
+\path{README.md} are required. On platforms other than Linux x86\_64,
+Lean~4.24.0 must first be installed using the platform's standard elan
+installation.
 
-All 245 proved declarations passed the axiom audit. In particular, the
-three closed conclusion theorems depend only on
-\path{propext}, \path{Classical.choice}, and \path{Quot.sound}:
-propositional extensionality, classical choice, and quotient soundness.
-There are no additional analytic or arithmetic axioms and no proof
-placeholders.
-
-\begin{samepage}
-The verification record and both sets of local logs are
-included with the frozen source archive
-\begin{center}\small
-\path{erdos143-lean-complete-verified-20261002.zip}.
-\end{center}
-Its SHA-256 digest, split across two lines only for typesetting, is
-\begin{center}\small\ttfamily
- d4a8477e5122ad7f66584483b84a93b1\\
- 4af38b3a412c8b9378617b2c2137fec6
-\end{center}
-\end{samepage}
-The article's LaTeX archive is a separate typesetting artifact; compiling
-it does not run the formalization. Kernel checking establishes the formal
-statements from the recorded foundations. Independent expert review of
-the mathematical formulation, the correspondence to Erd\H{o}s's question,
-and the exposition has not yet been completed. No claim of priority,
-external acceptance, or publication is made.
+The supplementary material contains the two original local verification
+records and a further build and statement audit dated October 23, 2026.
+The original runs include a separate-copy clean rebuild of the project
+using pinned dependency caches. These checks do not constitute a
+from-source rebuild of Lean and mathlib.
+All 245 proved declarations passed the axiom audit. The three closed
+conclusion theorems use only \path{propext}, \path{Classical.choice} and
+\path{Quot.sound}, the standard foundations of the Lean/mathlib
+formalization; no added analytic or arithmetic axiom is used.
+The original frozen source archive, its SHA-256 manifest and the local
+logs are included in the supplementary project's \path{verification/}
+directory. Typesetting this article does not execute the formal proof.
+Kernel checking establishes the stated formal results from their recorded
+foundations. Independent expert assessment of the formulation, its
+correspondence to Erd\H{o}s's question and the exposition remains part
+of the journal's review process.
 
 \begin{thebibliography}{9}
 
 \bibitem{Bloom143}
 T. F. Bloom, \emph{Erd\H{o}s problem \#143}, Erd\H{o}s Problems,
-\url{https://www.erdosproblems.com/143}, consulted October 2, 2026.
+\url{https://www.erdosproblems.com/143}, problem formulation consulted October 2, 2026.
+
+\bibitem{Erdos1935}
+P. Erd\H{o}s, \emph{Note on sequences of integers no one of which is
+  divisible by any other}, J. London Math. Soc. \textbf{10} (1935), 126--128.
+\href{https://www.renyi.hu/~p_erdos/1935-04.pdf}{Author archive copy}.
 
 \bibitem{Erdos1948}
 P. Erd\H{o}s, \emph{On the density of some sequences of integers},
@@ -1174,8 +1061,8 @@ p.~692.
 \bibitem{KLL2025}
 D. Koukoulopoulos, Y. Lamzouri, and J. D. Lichtman,
 \emph{Erd\H{o}s's integer dilation approximation problem and GCD graphs},
-preprint, February 13, 2025, Theorem~1.
-\href{https://dms.umontreal.ca/~koukoulo/documents/publications/erdos-integer-dilations.pdf}{Author-hosted manuscript}.
+arXiv:2502.09539v1 (2025), Theorem~1.
+\url{https://arxiv.org/abs/2502.09539v1}.
 
 \bibitem{Tao2014}
 T. Tao, \emph{254A, Notes 1: Elementary multiplicative number theory},
