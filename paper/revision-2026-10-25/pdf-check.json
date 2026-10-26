@@ -1,0 +1,261 @@
+{
+  "pdf": "/Users/mattiaapicella/Documents/ChatGPT/erdos-finale/erdos-143-candidate-disproof/paper/build/erdos143-candidate.pdf",
+  "stile": "libero",
+  "pagine": 12,
+  "dimensioni_pagine_bp": [
+    {
+      "pagina": 1,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 2,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 3,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 4,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 5,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 6,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 7,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 8,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 9,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 10,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 11,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    },
+    {
+      "pagina": 12,
+      "larghezza": 612.0,
+      "altezza": 792.0
+    }
+  ],
+  "prima_pagina_bp": [
+    612.0,
+    792.0
+  ],
+  "font": [
+    {
+      "nome": "CMBX10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMR9",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMCSC10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMMI9",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMSY9",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "MSBM10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMEX9",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMMI6",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMSY6",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMR6",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMR10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMSY10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMMI10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMEX10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMMI8",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMSY8",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMTI10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMTI9",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMR8",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "MSAM10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMTT10",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMTT9",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    },
+    {
+      "nome": "CMBX9",
+      "tipo": "Type 1",
+      "codifica": "Builtin",
+      "incorporato": true,
+      "sottoinsieme": true,
+      "mappa_unicode": true
+    }
+  ],
+  "registro": "/Users/mattiaapicella/Documents/ChatGPT/erdos-finale/erdos-143-candidate-disproof/paper/build/erdos143-candidate.log",
+  "errori": [],
+  "avvisi": [],
+  "limite": "Controlla dimensioni di pagina e nomi/incorporamento dei font, non margini interni, resa dei caratteri, figure, accessibilità o verità scientifica. Riconosce messaggi comuni del registro, non ogni formato: serve revisione visiva e sostanziale."
+}

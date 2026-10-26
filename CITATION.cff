@@ -4,15 +4,16 @@ title: "A rational counterexample to the reciprocal-logarithmic assertion in Erd
 authors:
   - family-names: Apicella
     given-names: Mattia
+    orcid: "https://orcid.org/0009-0008-4995-8558"
 type: software
-version: "0.1.0"
-date-released: "2026-10-02"
+version: "1.1"
+date-released: "2026-10-26"
 repository-code: "https://github.com/mapice/erdos-143-candidate-disproof"
 url: "https://github.com/mapice/erdos-143-candidate-disproof"
 abstract: >-
   Paper and Lean 4 formalization of a rational set separated by at least one
   from all positive integer dilates of its distinct elements, with divergent
-  reciprocal-logarithmic sum. Local kernel checks and a 245-declaration axiom
+  reciprocal-logarithmic sum. Local kernel checks and a 319-declaration axiom
   audit passed; independent expert review remains pending.
 keywords:
   - Erdos problem 143
@@ -20,3 +21,15 @@ keywords:
   - formal verification
   - primitive sets
   - analytic number theory
+preferred-citation:
+  type: article
+  title: "A rational counterexample to the reciprocal-logarithmic assertion in Erdős problem 143"
+  authors:
+    - family-names: Apicella
+      given-names: Mattia
+      orcid: "https://orcid.org/0009-0008-4995-8558"
+  year: 2026
+  version: "1.1"
+  doi: "10.5281/zenodo.23676536"
+  publisher:
+    name: Zenodo

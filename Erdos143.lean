@@ -55,3 +55,4 @@ import Erdos143.InsertionExistence
 import Erdos143.RoundExtension
 import Erdos143.Main
 import Erdos143.RealConclusion
+import Erdos143.LogarithmicProof

@@ -1,6 +1,6 @@
 # A rational counterexample for Erdős problem 143
 
-**Mattia Apicella · October 2, 2026; revised October 23, 2026**
+**Mattia Apicella · October 2, 2026; revised October 26, 2026**
 
 A candidate disproof of the **reciprocal-logarithmic convergence assertion** in
 [Erdős problem 143](https://www.erdosproblems.com/143), with a complete Lean 4
@@ -12,7 +12,7 @@ formalization and a self-contained mathematical paper.
 [Verification evidence](verification/README.md)
 
 > **Status.** The closed existence theorems have passed local Lean kernel
-> checks and an axiom audit of all 245 proved declarations. Independent expert
+> checks and an axiom audit of all 319 proved declarations. Independent expert
 > review of the formulation, its correspondence to Erdős's question, and the
 > exposition is still pending. No priority, peer review, or external acceptance
 > is claimed. The repository name retains “candidate” for this reason.
@@ -91,7 +91,7 @@ Verification checks source integrity and proof escapes, builds with warnings
 as errors, checks that the complete declaration audit is current, runs
 `#print axioms`, and compiles the expanded statement audit. Fresh logs go to
 `logs/`, separate from the committed historical evidence. Success ends with
-`Verification passed: build, 245-declaration axiom audit, and statement audit.`
+`Verification passed: build, complete axiom audit, statement audit, and logarithmic-proof audit.`
 
 The key closed theorems, with **no additional analytic or construction
 hypotheses**, are:
@@ -104,7 +104,7 @@ hypotheses**, are:
 
 Each conclusion depends only on `propext`, `Classical.choice`, and `Quot.sound`,
 the standard foundations used here by Lean/mathlib. The project audit rejects
-any other axiom and checks all 245 lemmas and theorems. See
+any other axiom and checks all 319 lemmas and theorems. See
 [AxiomAudit.lean](AxiomAudit.lean) and [StatementAudit.lean](StatementAudit.lean).
 The additional `verify-manuscript.sh` command compiles and audits
 `Erdos143.manuscript_full_statement` separately from those 245 declarations.
@@ -115,19 +115,36 @@ pushes and pull requests. Its job is deliberately skipped while the repository
 is private, avoiding private-repository runner usage. Local verification does
 not require GitHub Actions or changes to account settings.
 
-## Editorial preparation
+## Current manuscript revision
 
-The paper was revised on October 23, 2026 for possible submission to the
-Bulletin of the London Mathematical Society. The [public proof supplement](submission/blms-2026-10-23/README.md)
-includes a separately checked combined statement, explicitly asserting infinitude
-and the same nested finite prefixes, and a downloadable source archive.
-No journal submission or acceptance is implied. The unchanged original paper
-is preserved in `paper/original-2026-10-02/`.
+The October 26 manuscript retains the explicit finite extension and the simpler
+`p`, `q` notation. Six new modules formalize the shorter logarithmic analytic
+argument, including the absolutely convergent double Euler series, the uniform
+remainder bound, character limits, all residue classes and primitive selection.
+The closed theorem
+`Erdos143.Logarithmic.periodicPrimitiveSelection_logarithmic_proved`
+has exactly the original `PeriodicPrimitiveSelection` type. The dependency audit
+checks that it uses the logarithmic argument and does not invoke the old
+Euler-factor comparisons. Both analytic proofs are retained; the original
+55 proof modules and the construction are unchanged.
+
+[October 26 logarithmic correspondence](docs/Logarithmic-correspondence-2026-10-26.md)
+records the equation-to-theorem mapping and the fresh verification scope.
+
+The [revision correspondence](docs/Revision-correspondence-2026-10-25.md)
+explains the notation and proof interfaces. A [technical note](docs/selberg-delange-review-2026-10-25.md)
+checks an alternative Selberg–Delange derivation and explains why the shorter
+elementary argument is used in the manuscript.
+
+The [October 23 proof supplement](submission/blms-2026-10-23/README.md)
+remains a dated archive of the unchanged formal proof and that earlier paper.
+The exact October 23 manuscript is preserved in `paper/submitted-2026-10-23/`;
+the original October 2 paper remains in `paper/original-2026-10-02/`.
 
 ## Repository guide
 
-- [`paper/`](paper/README.md): 16-page English paper, revised October 23, 2026, standalone LaTeX, and build instructions
-- [`Erdos143/`](Erdos143/): 55 Lean modules, from analytic inputs to the real-domain conclusion
+- [`paper/`](paper/README.md): 12-page English paper, revised October 26, 2026, standalone LaTeX, and build instructions
+- [`Erdos143/`](Erdos143/): 61 Lean modules, including two analytic proofs and the real-domain conclusion
 - [`Erdos143.lean`](Erdos143.lean): umbrella import for the complete formalization
 - [`docs/`](docs/README.md): proof roadmap and paper-to-code correspondence
 - [`scripts/`](scripts/): bootstrap, verification, integrity and axiom checks, paper typesetting
@@ -145,6 +162,7 @@ statements and recorded evidence, rather than an AI assessment, support the
 formal-verification claims. Human mathematical review remains important.
 
 Please cite the title and author in [CITATION.cff](CITATION.cff), together with
-the exact commit you used. No DOI or external publication identifier has been
-assigned here. No open-source license has been selected for this repository;
+the exact commit you used. The preprint is deposited at
+https://doi.org/10.5281/zenodo.23676536; the DOI for all versions is
+https://doi.org/10.5281/zenodo.23671024. No open-source license has been selected for this repository;
 contact the author about reuse. Lean and mathlib retain their own licenses.

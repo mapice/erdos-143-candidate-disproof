@@ -1,0 +1,2 @@
+319 proved declarations collectively audited; exact union contains only standard foundations: Classical.choice, Quot.sound, propext
+Closed MainConclusion, StrongConclusion, real-domain conclusion, and logarithmic selection audited successfully

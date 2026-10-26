@@ -1,0 +1,14 @@
+✔ [3332/3339] Built Erdos143.LogarithmicEulerProduct (75s)
+✔ [3333/3339] Built Erdos143.LogarithmicRemainder (76s)
+✔ [3334/3339] Built Erdos143.LogarithmicDoubleSeries (44s)
+✔ [3335/3339] Built Erdos143.LogarithmicBounds (45s)
+ℹ [3336/3339] Built Erdos143.LogarithmicSelection (60s)
+info: Erdos143/LogarithmicSelection.lean:336:4: Try this:
+  ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3337/3339] Built Erdos143.LogarithmicProof (51s)
+✔ [3338/3339] Built Erdos143 (47s)
+Build completed successfully (3339 jobs).

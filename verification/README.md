@@ -1,10 +1,23 @@
 # Verification record and provenance
 
-The Lean proof sources, audit files, toolchain declaration, Lake configuration,
-and dependency manifest in this repository are byte-for-byte identical to the
-frozen verified sources from October 2, 2026. Repository-facing documentation
-and wrapper scripts have been curated separately; this is not a claim that
-all repository files have the original snapshot hashes.
+The original 55 proof modules, toolchain declaration, Lake configuration and
+dependency manifest remain identical to the frozen October 2 sources. The
+October 26 revision adds six modules for the logarithmic analytic proof,
+extends the umbrella and declaration audits, and updates the verification
+scripts. The current proof-input manifest therefore differs from the original;
+the baseline is preserved in `2026-10-26/baseline-proof-SHA256SUMS`.
+
+## October 26 logarithmic proof
+
+The new closed theorem is
+`Erdos143.Logarithmic.periodicPrimitiveSelection_logarithmic_proved`.
+The current project contains 319 proved declarations in 61 modules. The
+logarithmic audit traverses the conclusion's project dependencies, requires
+the new logarithmic identity and uniform remainder, and checks that the old
+Euler-factor comparison route is absent. The supplementary manuscript
+statement is checked separately. See the
+[correspondence](../docs/Logarithmic-correspondence-2026-10-26.md) and
+[current verification record](2026-10-26/).
 
 ## Original local checks
 
@@ -40,7 +53,7 @@ Run the portable integrity check from the repository root:
 python3 scripts/check_integrity.py
 ```
 
-[proof-SHA256SUMS](proof-SHA256SUMS) covers the unchanged proof and pinned
+[proof-SHA256SUMS](proof-SHA256SUMS) covers the current proof and pinned
 build inputs. [artifact-SHA256SUMS](artifact-SHA256SUMS) covers the original supplied
 paper, now preserved in `paper/original-2026-10-02/`, and the complete frozen archive.
 The October 23 editorial revision is separately identified in the submission

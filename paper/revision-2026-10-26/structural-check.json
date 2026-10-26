@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-26",
+  "pdf_sha256": "76b480eed29045d46a9ccdbc0cbe8144b65d56f2005c870c609419eedf6e062b",
+  "tex_sha256": "e40729f1d17afb1fc1576931d13e725ce9e6a39851b9528e92a4dddf7ef8add0",
+  "pages": 12,
+  "main_theorem_identical_to_zenodo_v1": true,
+  "main_theorem_sha256": "45522e4db792cf949348fcff9fb9e89a74a19161c65322d74595cf311c3589a7",
+  "visual_review_pages": [
+    1,
+    3,
+    9,
+    10,
+    11,
+    12
+  ],
+  "unchanged_body_pages": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "compile_errors": 0,
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "new_version_doi": "10.5281/zenodo.23676536",
+  "modifications": [
+    "Revision date",
+    "Local small-t upper-bound interval and compact-interval justification",
+    "Second analytic formalization and reproduction information",
+    "New version DOI",
+    "AI declaration records GPT-6.1 Sol for the new formalization and revision"
+  ]
+}

@@ -1,0 +1,8 @@
+Logarithmic dependency audit passed: 239 project constants; the logarithmic identity and uniform remainder are used, and the original Euler comparisons are absent.
+'Erdos143.generatingValue_logarithmic_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos143.prime_logarithmic_remainder_summable_and_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos143.Logarithmic.remainderBound_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos143.Logarithmic.periodicPrimitiveSelection_logarithmic_proved' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Erdos143.Logarithmic.periodicPrimitiveSelection_logarithmic_proved : Erdos143.PeriodicPrimitiveSelection

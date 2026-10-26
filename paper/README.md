@@ -2,25 +2,28 @@
 
 **A rational counterexample to the reciprocal-logarithmic assertion in Erdős problem 143**
 
-Mattia Apicella · October 2, 2026; revised October 23, 2026.
+Mattia Apicella · October 2, 2026; revised October 26, 2026.
 
-- [Current 16-page PDF](erdos143-candidate.pdf)
+- [Current 12-page PDF](erdos143-candidate.pdf)
 - [Corresponding standalone LaTeX source](erdos143-candidate.tex)
-- [Companion formal statement](../Erdos143/RealConclusion.lean)
-- [Public proof supplement and combined statement](../submission/blms-2026-10-23/README.md)
+- [Revision and Lean correspondence](../docs/Revision-correspondence-2026-10-25.md)
+- [Selberg–Delange assessment](../docs/selberg-delange-review-2026-10-25.md)
+- [October 23 submitted manuscript](submitted-2026-10-23/)
+- [October 2 original manuscript](original-2026-10-02/)
 
-The October 23 revision is prepared for initial consideration by the Bulletin
-of the London Mathematical Society. It uses the standard `amsart` layout,
-Computer Modern, a self-contained abstract and a motivating introduction,
-and includes an AI Declaration and a separate mathematical-software statement.
-The mathematical construction and frozen Lean sources are unchanged.
-The three explanatory figures from the original version have been removed
-from this research submission; the proof retains their mathematical content.
+The current version brings the complete finite-extension proposition forward,
+explains its immediate iteration, and then proves it by a finite induction
+with explicit hypotheses. The two primes are now denoted `p` and `q`;
+composite numerator and denominator abbreviations have been removed.
+The analytic section uses a short logarithmic Euler-product estimate.
 
-The original October 2 source and PDF are preserved byte for byte in
-[original-2026-10-02/](original-2026-10-02/). Their original digests remain
-checked by `verification/artifact-SHA256SUMS`; the paths in that manifest
-now identify the preserved originals.
+The main theorem is identical to the October 23 statement. All 55 original
+Lean modules remain unchanged. Six additional modules now formalize the
+revised logarithmic argument as a separate closed proof of the same
+periodic-selection interface. See the [October 26 correspondence](../docs/Logarithmic-correspondence-2026-10-26.md).
+The dated source archives retain the paper versions that they originally
+accompanied. The new version is deposited at
+https://doi.org/10.5281/zenodo.23676536.
 
 From the repository root:
 
@@ -29,14 +32,11 @@ bash scripts/build-paper.sh
 ```
 
 This runs `pdflatex` twice and writes the rebuilt PDF and logs to `paper/build/`.
-The reviewed PDF at the path above is refreshed explicitly after inspection.
-The source requires `amsart`, `fontenc`, `amsmath`, `amssymb`, `mathtools`,
-`microtype`, `needspace` and `hyperref`; no external figures, bibliography database,
-custom journal class or shell escape are required.
-A source rebuild can differ in PDF metadata and binary hash.
+The reviewed PDF is refreshed explicitly after inspection. The source requires
+`amsart`, `fontenc`, `amsmath`, `amssymb`, `mathtools`, `microtype`, `needspace`
+and `hyperref`; no external figures or bibliography database are required.
+A rebuild can differ in PDF metadata and binary hash.
 
-Typesetting does not execute Lean. Run the formal checks separately as
-described in the [main README](../README.md). Historical and fresh local
-checks are distinguished in the [verification record](../verification/README.md).
-Independent expert review is pending; no journal submission or acceptance
-is implied by this preparation.
+Typesetting does not execute Lean. Reproduction commands and the exact scope
+of the recorded formal checks are in the [main README](../README.md) and
+[verification record](../verification/README.md).

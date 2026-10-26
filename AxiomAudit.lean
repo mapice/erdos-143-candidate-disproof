@@ -1,253 +1,365 @@
 import Erdos143
+import Lean
 
-#print axioms Erdos143.hasAbelLowerBound_of_tendsto_minorant
-#print axioms Erdos143.HasAbelLowerBound.mono
-#print axioms Erdos143.HasAbelLowerBound.add
-#print axioms Erdos143.hasAbelLowerBound_of_tendsto
-#print axioms Erdos143.HasAbelLowerBound.add_vanishing
-#print axioms Erdos143.HasAbelLowerBound.mul_pos
-#print axioms Erdos143.HasAbelLowerBound.sum
-#print axioms Erdos143.HasAbelLowerBound.mul_tendsto_pos
-#print axioms Erdos143.normalized_power_series_upper_of_tail
-#print axioms Erdos143.exists_large_layer_of_abel_lower
-#print axioms Erdos143.scaled_progression_abel_lower_bound
-#print axioms Erdos143.all_residues_abel_lower_bound
-#print axioms Erdos143.nonprincipal_LFunction_nonzero_segment
-#print axioms Erdos143.nonprincipal_LFunction_continuous
-#print axioms Erdos143.prime_not_dvd_finset_prod
-#print axioms Erdos143.exists_prime_above_finset
-#print axioms Erdos143.private_prime_preserved
-#print axioms Erdos143.fresh_prime_avoids_old_part
-#print axioms Erdos143.exists_private_compatible_grid
-#print axioms Erdos143.extendState_points
-#print axioms Erdos143.block_extension_valid
-#print axioms Erdos143.state_mass_ne_top
-#print axioms Erdos143.extendState_mass_gain
-#print axioms Erdos143.blockAtom_value
-#print axioms Erdos143.blockScale_eq
-#print axioms Erdos143.blockScale_bounds
-#print axioms Erdos143.block_shift_eq
-#print axioms Erdos143.block_value_eq_perturbed
-#print axioms Erdos143.auxiliary_prime_exists
-#print axioms Erdos143.block_private_denominator
-#print axioms Erdos143.block_private_spacing
-#print axioms Erdos143.block_weight_lower_bound
-#print axioms Erdos143.finite_constraints_primitive_selection
-#print axioms Erdos143.emptyState_valid
-#print axioms Erdos143.state_grid_exists
-#print axioms Erdos143.stored_point_grid_separated
-#print axioms Erdos143.state_grid_free
-#print axioms Erdos143.fresh_private_prime
-#print axioms Erdos143.characterError_tendsto_zero
-#print axioms Erdos143.normalized_progression_identity
-#print axioms Erdos143.coprime_progression_abel_lower_bound
-#print axioms Erdos143.correction_product_range
-#print axioms Erdos143.correction_factor_one_le
-#print axioms Erdos143.correction_product_finset_le_two
-#print axioms Erdos143.prime_reciprocal_le_half
-#print axioms Erdos143.correction_factor_mono
-#print axioms Erdos143.prime_correction_product_le_two
-#print axioms Erdos143.rpow_one_add_le_linear
-#print axioms Erdos143.rpow_one_sub_le_linear
-#print axioms Erdos143.positive_euler_factor_lower
-#print axioms Erdos143.positive_euler_factor_upper
-#print axioms Erdos143.complex_norm_sq_interpolation
-#print axioms Erdos143.complex_euler_factor_lower
-#print axioms Erdos143.complex_inverse_euler_factor_upper
-#print axioms Erdos143.complex_finite_euler_product_upper
-#print axioms Erdos143.complex_euler_product_upper
-#print axioms Erdos143.preimage_density_of_surjective
-#print axioms Erdos143.zmod_preimage_density
-#print axioms Erdos143.complement_union_density
-#print axioms Erdos143.finite_primitive_from_layer
-#print axioms Erdos143.principalGeneratingTerm_mod_one
-#print axioms Erdos143.generatingSummand_norm_le_principalTerm
-#print axioms Erdos143.generatingValue_norm_le_global
-#print axioms Erdos143.omegaWeightHom_apply
-#print axioms Erdos143.omegaWeightHom_norm_le_one
-#print axioms Erdos143.generatingSummand_norm_summable
-#print axioms Erdos143.generating_eulerProduct_hasProd
-#print axioms Erdos143.generatingSummand_at_prime
-#print axioms Erdos143.generatingValue_eq_tsum
-#print axioms Erdos143.generatingValue_sub_one_integrable
-#print axioms Erdos143.nonprincipal_generatingValue_sub_one_integrable
-#print axioms Erdos143.generatingValue_eq_LSeries
-#print axioms Erdos143.generatingCoefficient_norm_le_one
-#print axioms Erdos143.generatingCoefficient_abscissa_le_one
-#print axioms Erdos143.generatingValue_continuousAt
-#print axioms Erdos143.generatingValue_continuousOn_positive
-#print axioms Erdos143.generatingSummand_norm_le_rpow
-#print axioms Erdos143.generatingValue_sub_one_eq_tail
-#print axioms Erdos143.shifted_square_reciprocal_summable
-#print axioms Erdos143.tailMajorantConst_nonneg
-#print axioms Erdos143.rpow_tail_comparison
-#print axioms Erdos143.two_rpow_tail_eq_exp
-#print axioms Erdos143.generatingValue_tail_bound
-#print axioms Erdos143.original_mono
-#print axioms Erdos143.original_empty
-#print axioms Erdos143.original_union
-#print axioms Erdos143.new_source_separated
-#print axioms Erdos143.rational_grid_gap
-#print axioms Erdos143.right_perturbation_safe
-#print axioms Erdos143.scaled_primitive_original
-#print axioms Erdos143.old_source_perturbation_safe
-#print axioms Erdos143.private_prime_numerator_ne_zero
-#print axioms Erdos143.private_grid_separated
-#print axioms Erdos143.original_iff_integer_multipliers
-#print axioms Erdos143.original_iff_real_inequalities
-#print axioms Erdos143.integrableOn_Ioi_of_power_exp_bounds
-#print axioms Erdos143.insert_primitive_block_original
-#print axioms Erdos143.labels_threshold
-#print axioms Erdos143.insert_block_exists
-#print axioms Erdos143.two_pow_length_le_prod
-#print axioms Erdos143.two_pow_omega_le
-#print axioms Erdos143.layerMass_nonneg
-#print axioms Erdos143.layerMass_eq_tsum_conditional
-#print axioms Erdos143.layer_weight_summable
-#print axioms Erdos143.setAbelTerm_summable
-#print axioms Erdos143.layer_abel_hasSum
-#print axioms Erdos143.nat_le_two_pow
-#print axioms Erdos143.omega_le_self
-#print axioms Erdos143.omega_level_primitive
-#print axioms Erdos143.primitive_mono
-#print axioms Erdos143.primitive_of_constant_omega
-#print axioms Erdos143.original_floor_injOn
-#print axioms Erdos143.original_locallyFiniteAbove
-#print axioms Erdos143.momentWeight_zero
-#print axioms Erdos143.momentWeight_nonneg
-#print axioms Erdos143.momentWeight_summable
-#print axioms Erdos143.log_shift_difference
-#print axioms Erdos143.natWeight_mul_formula
-#print axioms Erdos143.realAbelTerm_mul_lower_of_two_le
-#print axioms Erdos143.realAbelTerm_mul_lower
-#print axioms Erdos143.natWeight_zero
-#print axioms Erdos143.natWeight_nonneg
-#print axioms Erdos143.natWeight_pos
-#print axioms Erdos143.weight_nat_eq_ofReal
-#print axioms Erdos143.realAbelTerm_zero
-#print axioms Erdos143.realAbelTerm_nonneg
-#print axioms Erdos143.realAbelTerm_summable
-#print axioms Erdos143.fullWeightedCharacterTerm_zero
-#print axioms Erdos143.fullWeightedCharacterTerm_one
-#print axioms Erdos143.fullWeightedCharacterTerm_shift
-#print axioms Erdos143.fullWeightedCharacterTerm_summable
-#print axioms Erdos143.integratedGeneratingValue_eq_full_series
-#print axioms Erdos143.nextState_properties
-#print axioms Erdos143.pointSequence_monotone
-#print axioms Erdos143.stateSequence_mass_lower
-#print axioms Erdos143.constructedSet_original
-#print axioms Erdos143.constructedSet_lower
-#print axioms Erdos143.constructedSet_tiny
-#print axioms Erdos143.constructedSet_weight_diverges
-#print axioms Erdos143.mainConclusion_proved
-#print axioms Erdos143.strongConclusion_proved
-#print axioms Erdos143.weight_integrand_factorization
-#print axioms Erdos143.real_weight_integral
-#print axioms Erdos143.weight_integrand_integrable
-#print axioms Erdos143.global_first_moment_integrable
-#print axioms Erdos143.realMomentTerm_nonneg
-#print axioms Erdos143.realMomentTerm_continuous
-#print axioms Erdos143.realMomentTerm_summable
-#print axioms Erdos143.realMoment_sum_eq_norm
-#print axioms Erdos143.realMoment_sum_integrable
-#print axioms Erdos143.realMomentTerm_integrable
-#print axioms Erdos143.integral_realMomentTerm
-#print axioms Erdos143.log_squared_weight_summable
-#print axioms Erdos143.real_log_moment_integral
-#print axioms Erdos143.linear_exp_tail
-#print axioms Erdos143.original_iUnion_of_monotone
-#print axioms Erdos143.rational_set_countable
-#print axioms Erdos143.lower_bound_iUnion
-#print axioms Erdos143.totalWeight_mono
-#print axioms Erdos143.totalWeight_iUnion_eq_top_of_unbounded
-#print axioms Erdos143.totalWeight_iUnion_eq_top_of_round_bound
-#print axioms Erdos143.totalWeight_finset
-#print axioms Erdos143.nonprincipal_integratedGeneratingValue_bounded
-#print axioms Erdos143.nonprincipal_normalized_integral_tendsto_zero
-#print axioms Erdos143.setAbelMass_periodic
-#print axioms Erdos143.periodic_abel_lower_bound
-#print axioms Erdos143.periodic_primitive_selection_real
-#print axioms Erdos143.periodic_primitive_selection
-#print axioms Erdos143.periodicPrimitiveSelection_proved
-#print axioms Erdos143.perturbation_bound
-#print axioms Erdos143.perturbed_point_tiny
-#print axioms Erdos143.positive_finite_euler_product_lower
-#print axioms Erdos143.positive_euler_product_lower
-#print axioms Erdos143.summable_integral_of_integrable_tsum_nonneg
-#print axioms Erdos143.integral_tsum_nonneg_of_integrable_tsum
-#print axioms Erdos143.principalRealIntegrand_eq_re
-#print axioms Erdos143.principalRealIntegrand_nonneg
-#print axioms Erdos143.principalRealIntegrand_integrable
-#print axioms Erdos143.principal_integrated_re_eq_real_integral
-#print axioms Erdos143.integral_Ioo_neg_rpow
-#print axioms Erdos143.integral_abel_power_kernel
-#print axioms Erdos143.principal_integrated_re_lower
-#print axioms Erdos143.principal_abel_lower_bound
-#print axioms Erdos143.principal_prime_factor_real
-#print axioms Erdos143.principal_generatingValue_lower
-#print axioms Erdos143.principalGeneratingTerm_nonneg
-#print axioms Erdos143.principalGeneratingTerm_one
-#print axioms Erdos143.principalGeneratingTerm_cast
-#print axioms Erdos143.principalGeneratingTerm_summable
-#print axioms Erdos143.principalGeneratingValue_eq_real_sum
-#print axioms Erdos143.principalGeneratingValue_norm_eq_sum
-#print axioms Erdos143.principalGeneratingValue_norm_one_le
-#print axioms Erdos143.totientRatio_pos
-#print axioms Erdos143.principal_residue_eq_ratio
-#print axioms Erdos143.principal_norm_residue
-#print axioms Erdos143.principal_local_bounds
-#print axioms Erdos143.principal_generating_local_lower
-#print axioms Erdos143.global_generating_local_upper
-#print axioms Erdos143.progressionTerm_scale_lower
-#print axioms Erdos143.progressionMass_scale_lower
-#print axioms Erdos143.progressionTerm_nonneg
-#print axioms Erdos143.progressionTerm_summable
-#print axioms Erdos143.progressionMass_nonneg
-#print axioms Erdos143.progressionTerm_orthogonality
-#print axioms Erdos143.progressionMass_orthogonality
-#print axioms Erdos143.principal_character_inverse_unit
-#print axioms Erdos143.progressionMass_natCast_congr
-#print axioms Erdos143.constructedRealSet_lower
-#print axioms Erdos143.constructedRealSet_separated
-#print axioms Erdos143.constructedRealSet_weight_diverges
-#print axioms Erdos143.constructedRealSet_not_summable
-#print axioms Erdos143.realConclusion_proved
-#print axioms Erdos143.rootBadResidues_card_le
-#print axioms Erdos143.rootBadResidues_density
-#print axioms Erdos143.root_collision_mem_bad
-#print axioms Erdos143.root_not_bad_separated
-#print axioms Erdos143.round_gain_bound
-#print axioms Erdos143.round_prefix_exists
-#print axioms Erdos143.round_extension_exists
-#print axioms Erdos143.round_labels
-#print axioms Erdos143.dirichlet_prime_factor_norm_le_reciprocal
-#print axioms Erdos143.generating_norm_sq_le_LSeries
-#print axioms Erdos143.generatingValue_norm_sq_le_LSeries
-#print axioms Erdos143.generatingValue_norm_le_two_rpow_LSeries
-#print axioms Erdos143.nonprincipal_generatingValue_bounded
-#print axioms Erdos143.complexGeneratingTailTerm_integrable
-#print axioms Erdos143.integral_complexGeneratingTailTerm
-#print axioms Erdos143.complexGeneratingTailTerm_norm_integral_le
-#print axioms Erdos143.complexGeneratingTailTerm_norm_integrals_summable
-#print axioms Erdos143.complexGeneratingTailTerm_eq_summand
-#print axioms Erdos143.integratedGeneratingValue_eq_weighted_series
-#print axioms Erdos143.weightedCharacterTerm_summable
-#print axioms Erdos143.scaled_real_weight_lower_bound
-#print axioms Erdos143.real_weight_pos
-#print axioms Erdos143.weight_pos
-#print axioms Erdos143.weight_ne_top
-#print axioms Erdos143.round_blocks_lower_bound
-#print axioms Erdos143.scaled_weight_lower_bound
-#print axioms Erdos143.realGeneratingTailTerm_nonneg
-#print axioms Erdos143.realGeneratingTailTerm_integrable
-#print axioms Erdos143.integral_realGeneratingTailTerm
-#print axioms Erdos143.realGeneratingTailTerm_summable
-#print axioms Erdos143.global_sub_one_norm_eq_real_tail
-#print axioms Erdos143.realGeneratingTail_sum_integrable
-#print axioms Erdos143.weighted_log_series_summable
+open Lean Elab Command
+
+set_option maxRecDepth 100000
+
+/-- All source-discovered project lemmas and theorems, audited together below. -/
+def axiomAuditRoots : Array Name := #[
+-- BEGIN AXIOM AUDIT ROOTS
+  `Erdos143.hasAbelLowerBound_of_tendsto_minorant,
+  `Erdos143.HasAbelLowerBound.mono,
+  `Erdos143.HasAbelLowerBound.add,
+  `Erdos143.hasAbelLowerBound_of_tendsto,
+  `Erdos143.HasAbelLowerBound.add_vanishing,
+  `Erdos143.HasAbelLowerBound.mul_pos,
+  `Erdos143.HasAbelLowerBound.sum,
+  `Erdos143.HasAbelLowerBound.mul_tendsto_pos,
+  `Erdos143.normalized_power_series_upper_of_tail,
+  `Erdos143.exists_large_layer_of_abel_lower,
+  `Erdos143.scaled_progression_abel_lower_bound,
+  `Erdos143.all_residues_abel_lower_bound,
+  `Erdos143.nonprincipal_LFunction_nonzero_segment,
+  `Erdos143.nonprincipal_LFunction_continuous,
+  `Erdos143.prime_not_dvd_finset_prod,
+  `Erdos143.exists_prime_above_finset,
+  `Erdos143.private_prime_preserved,
+  `Erdos143.fresh_prime_avoids_old_part,
+  `Erdos143.exists_private_compatible_grid,
+  `Erdos143.extendState_points,
+  `Erdos143.block_extension_valid,
+  `Erdos143.state_mass_ne_top,
+  `Erdos143.extendState_mass_gain,
+  `Erdos143.blockAtom_value,
+  `Erdos143.blockScale_eq,
+  `Erdos143.blockScale_bounds,
+  `Erdos143.block_shift_eq,
+  `Erdos143.block_value_eq_perturbed,
+  `Erdos143.auxiliary_prime_exists,
+  `Erdos143.block_private_denominator,
+  `Erdos143.block_private_spacing,
+  `Erdos143.block_weight_lower_bound,
+  `Erdos143.finite_constraints_primitive_selection,
+  `Erdos143.emptyState_valid,
+  `Erdos143.state_grid_exists,
+  `Erdos143.stored_point_grid_separated,
+  `Erdos143.state_grid_free,
+  `Erdos143.fresh_private_prime,
+  `Erdos143.characterError_tendsto_zero,
+  `Erdos143.normalized_progression_identity,
+  `Erdos143.coprime_progression_abel_lower_bound,
+  `Erdos143.correction_product_range,
+  `Erdos143.correction_factor_one_le,
+  `Erdos143.correction_product_finset_le_two,
+  `Erdos143.prime_reciprocal_le_half,
+  `Erdos143.correction_factor_mono,
+  `Erdos143.prime_correction_product_le_two,
+  `Erdos143.rpow_one_add_le_linear,
+  `Erdos143.rpow_one_sub_le_linear,
+  `Erdos143.positive_euler_factor_lower,
+  `Erdos143.positive_euler_factor_upper,
+  `Erdos143.complex_norm_sq_interpolation,
+  `Erdos143.complex_euler_factor_lower,
+  `Erdos143.complex_inverse_euler_factor_upper,
+  `Erdos143.complex_finite_euler_product_upper,
+  `Erdos143.complex_euler_product_upper,
+  `Erdos143.preimage_density_of_surjective,
+  `Erdos143.zmod_preimage_density,
+  `Erdos143.complement_union_density,
+  `Erdos143.finite_primitive_from_layer,
+  `Erdos143.principalGeneratingTerm_mod_one,
+  `Erdos143.generatingSummand_norm_le_principalTerm,
+  `Erdos143.generatingValue_norm_le_global,
+  `Erdos143.omegaWeightHom_apply,
+  `Erdos143.omegaWeightHom_norm_le_one,
+  `Erdos143.generatingSummand_norm_summable,
+  `Erdos143.generating_eulerProduct_hasProd,
+  `Erdos143.generatingSummand_at_prime,
+  `Erdos143.generatingValue_eq_tsum,
+  `Erdos143.generatingValue_sub_one_integrable,
+  `Erdos143.nonprincipal_generatingValue_sub_one_integrable,
+  `Erdos143.generatingValue_eq_LSeries,
+  `Erdos143.generatingCoefficient_norm_le_one,
+  `Erdos143.generatingCoefficient_abscissa_le_one,
+  `Erdos143.generatingValue_continuousAt,
+  `Erdos143.generatingValue_continuousOn_positive,
+  `Erdos143.generatingSummand_norm_le_rpow,
+  `Erdos143.generatingValue_sub_one_eq_tail,
+  `Erdos143.shifted_square_reciprocal_summable,
+  `Erdos143.tailMajorantConst_nonneg,
+  `Erdos143.rpow_tail_comparison,
+  `Erdos143.two_rpow_tail_eq_exp,
+  `Erdos143.generatingValue_tail_bound,
+  `Erdos143.original_mono,
+  `Erdos143.original_empty,
+  `Erdos143.original_union,
+  `Erdos143.new_source_separated,
+  `Erdos143.rational_grid_gap,
+  `Erdos143.right_perturbation_safe,
+  `Erdos143.scaled_primitive_original,
+  `Erdos143.old_source_perturbation_safe,
+  `Erdos143.private_prime_numerator_ne_zero,
+  `Erdos143.private_grid_separated,
+  `Erdos143.original_iff_integer_multipliers,
+  `Erdos143.original_iff_real_inequalities,
+  `Erdos143.integrableOn_Ioi_of_power_exp_bounds,
+  `Erdos143.insert_primitive_block_original,
+  `Erdos143.labels_threshold,
+  `Erdos143.insert_block_exists,
+  `Erdos143.two_pow_length_le_prod,
+  `Erdos143.two_pow_omega_le,
+  `Erdos143.layerMass_nonneg,
+  `Erdos143.layerMass_eq_tsum_conditional,
+  `Erdos143.layer_weight_summable,
+  `Erdos143.setAbelTerm_summable,
+  `Erdos143.layer_abel_hasSum,
+  `Erdos143.nat_le_two_pow,
+  `Erdos143.omega_le_self,
+  `Erdos143.omega_level_primitive,
+  `Erdos143.primitive_mono,
+  `Erdos143.primitive_of_constant_omega,
+  `Erdos143.original_floor_injOn,
+  `Erdos143.original_locallyFiniteAbove,
+  `Erdos143.momentWeight_zero,
+  `Erdos143.momentWeight_one,
+  `Erdos143.momentWeight_nonneg,
+  `Erdos143.momentWeight_summable,
+  `Erdos143.log_shift_difference,
+  `Erdos143.natWeight_mul_formula,
+  `Erdos143.realAbelTerm_mul_lower_of_two_le,
+  `Erdos143.realAbelTerm_mul_lower,
+  `Erdos143.natWeight_zero,
+  `Erdos143.natWeight_one,
+  `Erdos143.natWeight_nonneg,
+  `Erdos143.natWeight_pos,
+  `Erdos143.weight_nat_eq_ofReal,
+  `Erdos143.realAbelTerm_zero,
+  `Erdos143.realAbelTerm_one,
+  `Erdos143.realAbelTerm_nonneg,
+  `Erdos143.realAbelTerm_summable,
+  `Erdos143.fullWeightedCharacterTerm_zero,
+  `Erdos143.fullWeightedCharacterTerm_one,
+  `Erdos143.fullWeightedCharacterTerm_shift,
+  `Erdos143.fullWeightedCharacterTerm_summable,
+  `Erdos143.integratedGeneratingValue_eq_full_series,
+  `Erdos143.Logarithmic.Bounds.generating_norm_eq_exp_remainder,
+  `Erdos143.Logarithmic.Bounds.generating_norm_upper,
+  `Erdos143.Logarithmic.Bounds.generating_norm_lower,
+  `Erdos143.Logarithmic.Bounds.nonprincipal_generatingValue_bounded,
+  `Erdos143.Logarithmic.Bounds.principal_generating_local_lower,
+  `Erdos143.Logarithmic.Bounds.global_generating_local_upper,
+  `Erdos143.logarithmicEulerTaylorTerm_norm_tsum_le,
+  `Erdos143.logarithmicEulerRemainder_eq_tsum_tsum,
+  `Erdos143.logarithmicEulerDoubleSeries_abs_summable_and_tsum_le,
+  `Erdos143.logarithmicEulerDoubleSeries_summable,
+  `Erdos143.logarithmicEulerDoubleSeries_tsum_eq,
+  `Erdos143.logarithmicEulerRemainder_summable,
+  `Erdos143.logarithmic_euler_identity,
+  `Erdos143.dirichlet_prime_factors_summable,
+  `Erdos143.generatingValue_eq_exp_log,
+  `Erdos143.generatingValue_ne_zero_logarithmic,
+  `Erdos143.LSeries_ne_zero_logarithmic,
+  `Erdos143.generatingValue_logarithmic_identity,
+  `Erdos143.Logarithmic.remainderBound_proved,
+  `Erdos143.Logarithmic.periodicPrimitiveSelection_logarithmic_proved,
+  `Erdos143.omega_coefficient_remainder_bound,
+  `Erdos143.hasSum_logarithmicEulerFactorRemainder,
+  `Erdos143.logarithmicEulerFactorRemainder_term_bound,
+  `Erdos143.logarithmicEulerFactorRemainder_norm_le,
+  `Erdos143.quadratic_tail_sum_range,
+  `Erdos143.quadratic_tail_sum_finset_le_one,
+  `Erdos143.quadratic_geometric_majorant_mono,
+  `Erdos143.prime_quadratic_majorant_sum_le_one,
+  `Erdos143.prime_logarithmic_remainder_sum_norm_le,
+  `Erdos143.prime_logarithmic_remainder_summable_and_norm_le,
+  `Erdos143.Logarithmic.global_generating_local_upper,
+  `Erdos143.Logarithmic.nonprincipal_generatingValue_bounded,
+  `Erdos143.Logarithmic.generatingValue_sub_one_integrable,
+  `Erdos143.Logarithmic.realGeneratingTail_sum_integrable,
+  `Erdos143.Logarithmic.weighted_log_series_summable,
+  `Erdos143.Logarithmic.complexGeneratingTailTerm_norm_integrals_summable,
+  `Erdos143.Logarithmic.integratedGeneratingValue_eq_weighted_series,
+  `Erdos143.Logarithmic.weightedCharacterTerm_summable,
+  `Erdos143.Logarithmic.realAbelTerm_summable,
+  `Erdos143.Logarithmic.fullWeightedCharacterTerm_summable,
+  `Erdos143.Logarithmic.integratedGeneratingValue_eq_full_series,
+  `Erdos143.Logarithmic.progressionTerm_summable,
+  `Erdos143.Logarithmic.progressionMass_orthogonality,
+  `Erdos143.Logarithmic.global_first_moment_integrable,
+  `Erdos143.Logarithmic.realMoment_sum_integrable,
+  `Erdos143.Logarithmic.realMomentTerm_integrable,
+  `Erdos143.Logarithmic.log_squared_weight_summable,
+  `Erdos143.Logarithmic.momentWeight_summable,
+  `Erdos143.Logarithmic.nonprincipal_integratedGeneratingValue_bounded,
+  `Erdos143.Logarithmic.nonprincipal_normalized_integral_tendsto_zero,
+  `Erdos143.Logarithmic.principalRealIntegrand_integrable,
+  `Erdos143.Logarithmic.principal_integrated_re_eq_real_integral,
+  `Erdos143.Logarithmic.integral_abel_power_kernel,
+  `Erdos143.Logarithmic.principal_integrated_re_lower,
+  `Erdos143.Logarithmic.principal_abel_lower_bound,
+  `Erdos143.Logarithmic.characterError_tendsto_zero,
+  `Erdos143.Logarithmic.normalized_progression_identity,
+  `Erdos143.Logarithmic.coprime_progression_abel_lower_bound,
+  `Erdos143.Logarithmic.progressionMass_scale_lower,
+  `Erdos143.Logarithmic.scaled_progression_abel_lower_bound,
+  `Erdos143.Logarithmic.all_residues_abel_lower_bound,
+  `Erdos143.Logarithmic.setAbelMass_periodic,
+  `Erdos143.Logarithmic.periodic_abel_lower_bound,
+  `Erdos143.Logarithmic.layer_weight_summable,
+  `Erdos143.Logarithmic.setAbelTerm_summable,
+  `Erdos143.Logarithmic.layer_abel_hasSum,
+  `Erdos143.Logarithmic.exists_large_layer_of_abel_lower,
+  `Erdos143.Logarithmic.finite_primitive_from_layer,
+  `Erdos143.Logarithmic.periodic_primitive_selection_real,
+  `Erdos143.Logarithmic.periodic_primitive_selection,
+  `Erdos143.Logarithmic.periodicPrimitiveSelection_proved,
+  `Erdos143.nextState_properties,
+  `Erdos143.pointSequence_monotone,
+  `Erdos143.stateSequence_mass_lower,
+  `Erdos143.constructedSet_original,
+  `Erdos143.constructedSet_lower,
+  `Erdos143.constructedSet_tiny,
+  `Erdos143.constructedSet_weight_diverges,
+  `Erdos143.mainConclusion_proved,
+  `Erdos143.strongConclusion_proved,
+  `Erdos143.weight_integrand_factorization,
+  `Erdos143.real_weight_integral,
+  `Erdos143.weight_integrand_integrable,
+  `Erdos143.global_first_moment_integrable,
+  `Erdos143.realMomentTerm_nonneg,
+  `Erdos143.realMomentTerm_continuous,
+  `Erdos143.realMomentTerm_summable,
+  `Erdos143.realMoment_sum_eq_norm,
+  `Erdos143.realMoment_sum_integrable,
+  `Erdos143.realMomentTerm_integrable,
+  `Erdos143.integral_realMomentTerm,
+  `Erdos143.log_squared_weight_summable,
+  `Erdos143.real_log_moment_integral,
+  `Erdos143.linear_exp_tail,
+  `Erdos143.original_iUnion_of_monotone,
+  `Erdos143.rational_set_countable,
+  `Erdos143.lower_bound_iUnion,
+  `Erdos143.totalWeight_mono,
+  `Erdos143.totalWeight_iUnion_eq_top_of_unbounded,
+  `Erdos143.totalWeight_iUnion_eq_top_of_round_bound,
+  `Erdos143.totalWeight_finset,
+  `Erdos143.nonprincipal_integratedGeneratingValue_bounded,
+  `Erdos143.nonprincipal_normalized_integral_tendsto_zero,
+  `Erdos143.setAbelMass_periodic,
+  `Erdos143.periodic_abel_lower_bound,
+  `Erdos143.periodic_primitive_selection_real,
+  `Erdos143.periodic_primitive_selection,
+  `Erdos143.periodicPrimitiveSelection_proved,
+  `Erdos143.perturbation_bound,
+  `Erdos143.perturbed_point_tiny,
+  `Erdos143.positive_finite_euler_product_lower,
+  `Erdos143.positive_euler_product_lower,
+  `Erdos143.summable_integral_of_integrable_tsum_nonneg,
+  `Erdos143.integral_tsum_nonneg_of_integrable_tsum,
+  `Erdos143.principalRealIntegrand_eq_re,
+  `Erdos143.principalRealIntegrand_nonneg,
+  `Erdos143.principalRealIntegrand_integrable,
+  `Erdos143.principal_integrated_re_eq_real_integral,
+  `Erdos143.integral_Ioo_neg_rpow,
+  `Erdos143.integral_abel_power_kernel,
+  `Erdos143.principal_integrated_re_lower,
+  `Erdos143.principal_abel_lower_bound,
+  `Erdos143.principal_prime_factor_real,
+  `Erdos143.principal_generatingValue_lower,
+  `Erdos143.principalGeneratingTerm_nonneg,
+  `Erdos143.principalGeneratingTerm_one,
+  `Erdos143.principalGeneratingTerm_cast,
+  `Erdos143.principalGeneratingTerm_summable,
+  `Erdos143.principalGeneratingValue_eq_real_sum,
+  `Erdos143.principalGeneratingValue_norm_eq_sum,
+  `Erdos143.principalGeneratingValue_norm_one_le,
+  `Erdos143.totientRatio_pos,
+  `Erdos143.principal_residue_eq_ratio,
+  `Erdos143.principal_norm_residue,
+  `Erdos143.principal_local_bounds,
+  `Erdos143.principal_generating_local_lower,
+  `Erdos143.global_generating_local_upper,
+  `Erdos143.progressionTerm_scale_lower,
+  `Erdos143.progressionMass_scale_lower,
+  `Erdos143.progressionTerm_nonneg,
+  `Erdos143.progressionTerm_summable,
+  `Erdos143.progressionMass_nonneg,
+  `Erdos143.progressionTerm_orthogonality,
+  `Erdos143.progressionMass_orthogonality,
+  `Erdos143.principal_character_inverse_unit,
+  `Erdos143.progressionMass_natCast_congr,
+  `Erdos143.constructedRealSet_lower,
+  `Erdos143.constructedRealSet_separated,
+  `Erdos143.constructedRealSet_weight_diverges,
+  `Erdos143.constructedRealSet_not_summable,
+  `Erdos143.realConclusion_proved,
+  `Erdos143.rootBadResidues_card_le,
+  `Erdos143.rootBadResidues_density,
+  `Erdos143.root_collision_mem_bad,
+  `Erdos143.root_not_bad_separated,
+  `Erdos143.round_gain_bound,
+  `Erdos143.round_prefix_exists,
+  `Erdos143.round_extension_exists,
+  `Erdos143.round_labels,
+  `Erdos143.dirichlet_prime_factor_norm_le_reciprocal,
+  `Erdos143.generating_norm_sq_le_LSeries,
+  `Erdos143.generatingValue_norm_sq_le_LSeries,
+  `Erdos143.generatingValue_norm_le_two_rpow_LSeries,
+  `Erdos143.nonprincipal_generatingValue_bounded,
+  `Erdos143.complexGeneratingTailTerm_integrable,
+  `Erdos143.integral_complexGeneratingTailTerm,
+  `Erdos143.complexGeneratingTailTerm_norm_integral_le,
+  `Erdos143.complexGeneratingTailTerm_norm_integrals_summable,
+  `Erdos143.complexGeneratingTailTerm_eq_summand,
+  `Erdos143.integratedGeneratingValue_eq_weighted_series,
+  `Erdos143.weightedCharacterTerm_summable,
+  `Erdos143.scaled_real_weight_lower_bound,
+  `Erdos143.real_weight_pos,
+  `Erdos143.weight_pos,
+  `Erdos143.weight_ne_top,
+  `Erdos143.round_blocks_lower_bound,
+  `Erdos143.scaled_weight_lower_bound,
+  `Erdos143.realGeneratingTailTerm_nonneg,
+  `Erdos143.realGeneratingTailTerm_integrable,
+  `Erdos143.integral_realGeneratingTailTerm,
+  `Erdos143.realGeneratingTailTerm_summable,
+  `Erdos143.global_sub_one_norm_eq_real_tail,
+  `Erdos143.realGeneratingTail_sum_integrable,
+  `Erdos143.weighted_log_series_summable
+-- END AXIOM AUDIT ROOTS
+]
+
+/- Use Lean's own proof-term traversal with one visited set for all roots.
+The resulting axiom set is the exact union for the entire list of roots. -/
+run_cmd do
+  let env ← getEnv
+  let mut rootsSeen : NameSet := {}
+  for root in axiomAuditRoots do
+    if rootsSeen.contains root then
+      throwError "Duplicate audit root {root}"
+    rootsSeen := rootsSeen.insert root
+    match env.checked.get.find? root with
+    | some (.thmInfo _) => pure ()
+    | some _ => throwError "Audit root is not a checked theorem: {root}"
+    | none => throwError "Missing checked audit root {root}"
+  let work : CollectAxioms.M Unit := axiomAuditRoots.forM CollectAxioms.collect
+  let (_, state) := (work.run env).run {}
+  let axioms := state.axioms.qsort Name.lt
+  let allowed : Array Name := #[`propext, `Classical.choice, `Quot.sound]
+  for ax in axioms do
+    unless allowed.contains ax do
+      throwError "Unexpected collective axiom {ax}"
+  for root in axiomAuditRoots do
+    logInfo m!"AXIOM_AUDIT_ROOT {root}"
+  for ax in axioms do
+    logInfo m!"AXIOM_AUDIT_AXIOM {ax}"
+  logInfo m!"AXIOM_AUDIT_SUMMARY roots={axiomAuditRoots.size} visited={state.visited.size} axioms={axioms.size}"
+  logInfo "AXIOM_AUDIT_PASSED"
 
 #print Erdos143.MainConclusion
 #print Erdos143.StrongConclusion
 #check Erdos143.mainConclusion_proved
 #check Erdos143.strongConclusion_proved
 #check Erdos143.realConclusion_proved
+#check Erdos143.Logarithmic.periodicPrimitiveSelection_logarithmic_proved

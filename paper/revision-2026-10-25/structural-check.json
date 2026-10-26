@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-25",
+  "pages": 12,
+  "labels": 36,
+  "references": 54,
+  "bibliography_items": 5,
+  "main_theorem_byte_identical_to_submitted": true,
+  "source_sha256": "1221db279cacb7046ce8906cfa3b5456e31388b0d4119ae434e4b2fdd3046267",
+  "latex_environments_balanced": true,
+  "missing_references": false,
+  "duplicate_labels": false,
+  "visual_review_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "native_editor_compilation": "success",
+  "proof_sources_integrity": "64 frozen inputs and artifacts matched",
+  "formal_build_repeated": false,
+  "analytic_proof_scope": "Rewritten elementary Euler-product argument; existing Lean selection proof unchanged",
+  "readability_revision": true,
+  "visual_rechecked_pages": [
+    10
+  ],
+  "unchanged_rendered_pages_since_previous_review": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12
+  ],
+  "all_formal_statements_unchanged": false,
+  "statement_count": 6,
+  "confirmed_ai_model": "GPT-6 Astra",
+  "mathematical_conditions_unchanged": true,
+  "statement_wording_changes": [
+    "def:admissible introductory sentences only"
+  ],
+  "unchanged_statement_count": 5,
+  "current_pass_statement_wording_unchanged": true,
+  "current_pass_mathematical_expressions_unchanged": false,
+  "current_pass_explanatory_notation_changes": "States the bound |chi(n)| <= 1 and identifies the nonnegative series to which Tonelli applies before termwise integration; formal statements and displayed formulas unchanged."
+}

@@ -1,0 +1,4 @@
+'Erdos143.mainConclusion_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos143.strongConclusion_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos143.realConclusion_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos143.manuscript_full_statement' depends on axioms: [propext, Classical.choice, Quot.sound]

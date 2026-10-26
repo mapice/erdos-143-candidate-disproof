@@ -17,5 +17,6 @@ lake build 2>&1 | tee logs/build-final.log
 lake env lean -DwarningAsError=true AxiomAudit.lean 2>&1 | tee logs/axioms-final.log
 python3 scripts/check_axioms.py logs/axioms-final.log | tee logs/audit-summary.log
 lake env lean -DwarningAsError=true StatementAudit.lean 2>&1 | tee logs/statement-audit.log
+bash scripts/verify-logarithmic.sh
 python3 scripts/check_integrity.py
-printf '\nVerification passed: build, 245-declaration axiom audit, and statement audit.\n'
+printf '\nVerification passed: build, complete axiom audit, statement audit, and logarithmic-proof audit.\n'

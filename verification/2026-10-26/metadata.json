@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-26",
+  "lean_version": "4.24.0",
+  "mathlib_revision": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "proof_modules": 61,
+  "proved_declarations": 319,
+  "new_proved_declarations": 74,
+  "original_modules_byte_identical": 55,
+  "full_project_build_passed": true,
+  "build_jobs": 3339,
+  "pinned_dependency_cache_used": true,
+  "lean_and_mathlib_rebuilt_from_source": false,
+  "axiom_audit_passed": true,
+  "collective_audit_constants_visited": 62997,
+  "axioms_union": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "individual_319_declaration_audit_also_passed": true,
+  "logarithmic_dependency_audit_passed": true,
+  "logarithmic_project_constants": 239,
+  "old_euler_comparisons_absent_from_second_selection_proof": true,
+  "closed_second_analytic_theorem": "Erdos143.Logarithmic.periodicPrimitiveSelection_logarithmic_proved",
+  "closed_second_analytic_type": "Erdos143.PeriodicPrimitiveSelection",
+  "supplementary_manuscript_statement_passed": true,
+  "pinned_dependency_check_passed": true,
+  "proof_manifest_sha256": "fd06cf80b46368c4697ec8499d378cf387c19188f09cb35b8c8a7cb7751450d2",
+  "paper_pages": 12,
+  "paper_sha256": "76b480eed29045d46a9ccdbc0cbe8144b65d56f2005c870c609419eedf6e062b",
+  "independent_human_peer_review": false,
+  "scope": "Second logarithmic analytic proof closed to the same selection interface; original construction and rational/real existence theorems retained."
+}

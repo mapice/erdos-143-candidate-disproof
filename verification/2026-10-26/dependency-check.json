@@ -1,0 +1,68 @@
+{
+  "packages": [
+    {
+      "name": "mathlib",
+      "expected": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+      "observed": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "plausible",
+      "expected": "dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805",
+      "observed": "dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "expected": "99657ad92e23804e279f77ea6dbdeebaa1317b98",
+      "observed": "99657ad92e23804e279f77ea6dbdeebaa1317b98",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "importGraph",
+      "expected": "d768126816be17600904726ca7976b185786e6b9",
+      "observed": "d768126816be17600904726ca7976b185786e6b9",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "proofwidgets",
+      "expected": "556caed0eadb7901e068131d1be208dd907d07a2",
+      "observed": "556caed0eadb7901e068131d1be208dd907d07a2",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "aesop",
+      "expected": "725ac8cd67acd70a7beaf47c3725e23484c1ef50",
+      "observed": "725ac8cd67acd70a7beaf47c3725e23484c1ef50",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "Qq",
+      "expected": "dea6a3361fa36d5a13f87333dc506ada582e025c",
+      "observed": "dea6a3361fa36d5a13f87333dc506ada582e025c",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "batteries",
+      "expected": "8da40b72fece29b7d3fe3d768bac4c8910ce9bee",
+      "observed": "8da40b72fece29b7d3fe3d768bac4c8910ce9bee",
+      "tracked_sources_unchanged": true,
+      "match": true
+    },
+    {
+      "name": "Cli",
+      "expected": "91c18fa62838ad0ab7384c03c9684d99d306e1da",
+      "observed": "91c18fa62838ad0ab7384c03c9684d99d306e1da",
+      "tracked_sources_unchanged": true,
+      "match": true
+    }
+  ],
+  "all_match": true
+}
